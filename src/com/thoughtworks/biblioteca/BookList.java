@@ -1,3 +1,4 @@
+//Stores the List of Books
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
@@ -6,12 +7,8 @@ public class BookList {
 
     private ArrayList<String> books;
 
-    BookList() {
-        books = new ArrayList<String>();
-    }
-
-    public void add(String book) {
-        books.add(book);
+    BookList(ArrayList<String> books) {
+        this.books = books;
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -32,9 +33,10 @@ public class DisplayTest {
 
     @Test
     public void shouldPrintListOfBooks() {
-        BookList bookList = new BookList();
-        bookList.add("Twilight");
-        bookList.add("Harry Potter");
+        ArrayList<String> books = new ArrayList<String>();
+        books.add("Twilight");
+        books.add("Harry Potter");
+        BookList bookList = new BookList(books);
         Display display = new Display(bookList.toString());
         display.display();
 

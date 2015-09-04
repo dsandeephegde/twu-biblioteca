@@ -1,4 +1,4 @@
-//Used to display to the output
+//Display to the Console output
 package com.thoughtworks.biblioteca;
 
 public class Display {
