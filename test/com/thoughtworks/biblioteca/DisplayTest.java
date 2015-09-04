@@ -6,11 +6,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class DisplayTest {
 
@@ -23,24 +20,24 @@ public class DisplayTest {
 
     @After
     public void cleanUpStreams() {
-        System.setOut(null);
+        System.setOut(System.out);
     }
 
     @Test
     public void shouldPrintWelcomeMessage() {
-        Display display = new Display(new ArrayList<String>());
-        display.display("Welcome to Biblioteca");
+        Display display = new Display("Welcome to Biblioteca\n");
+        display.display();
         assertEquals("Welcome to Biblioteca\n", outContent.toString());
     }
 
     @Test
     public void shouldPrintListOfBooks() {
-        ArrayList<String> books = new ArrayList<String>();
-        books.add("Book1");
-        books.add("Book2");
-        Display display = new Display(books);
-        display.displayBooks();
+        BookList bookList = new BookList();
+        bookList.add("Twilight");
+        bookList.add("Harry Potter");
+        Display display = new Display(bookList.toString());
+        display.display();
 
-        assertEquals("Book1\nBook2\n", outContent.toString());
+        assertEquals("Twilight" + "\n" + "Harry Potter" + "\n", outContent.toString());
     }
 }
