@@ -40,6 +40,6 @@ public class DisplayTest {
         Display display = new Display(bookList.toString());
         display.display();
 
-        assertEquals("Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", outContent.toString());
+        assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", outContent.toString());
     }
 }

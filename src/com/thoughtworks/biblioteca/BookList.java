@@ -14,6 +14,7 @@ public class BookList {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Book Name\t").append("Author\t").append("Year Published\n");
         for (Book book : books)
             stringBuilder.append(book.toString()).append("\n");
         return stringBuilder.toString();

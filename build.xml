@@ -27,6 +27,7 @@
             </classpath>
             <test name="com.thoughtworks.biblioteca.DisplayTest" todir="."/>
             <test name="com.thoughtworks.biblioteca.BookListTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.BookTest" todir="."/>
         </junit>
     </target>
 </project>
