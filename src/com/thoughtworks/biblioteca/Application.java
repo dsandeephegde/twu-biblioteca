@@ -16,12 +16,13 @@ public class Application {
         displayWelcome.display();
         ArrayList<String> options = new ArrayList<String>();
         options.add("1. List Books");
+        options.add("2. Exit");
         Menu menu = new Menu(options);
         menu.display();
         Scanner scanner = new Scanner(System.in);
         Input input = new Input(scanner);
         int option = input.getOption();
-        while(option != -1) {
+        while(true) {
             if (option == 1) {
                 ArrayList<Book> books = new ArrayList<Book>();
                 books.add(new Book("Twilight", "Stephenie Meyer", 2005));
@@ -29,9 +30,13 @@ public class Application {
                 BookList bookList = new BookList(books);
                 Display displayBookList = new Display(bookList.toString());
                 displayBookList.display();
-            } else {
-                Display displayBookList = new Display("Select a valid option!");
-                displayBookList.display();
+            }
+            else if(option == 2) {
+                System.exit(0);
+            }
+            else {
+                Display display = new Display("Select a valid option!");
+                display.display();
             }
             option = input.getOption();
         }
