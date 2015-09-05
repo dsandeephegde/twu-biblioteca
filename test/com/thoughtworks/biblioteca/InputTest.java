@@ -18,4 +18,14 @@ public class InputTest {
         assertEquals(1, input.getOption());
         System.setIn(System.in);
     }
+
+    @Test
+    public void shouldReturnMinusOneOnNotAIntegerInput() {
+        ByteArrayInputStream in = new ByteArrayInputStream("string".getBytes());
+        System.setIn(in);
+        Scanner scanner = new Scanner(System.in);
+        Input input = new Input(scanner);
+        assertEquals(-1, input.getOption());
+        System.setIn(System.in);
+    }
 }

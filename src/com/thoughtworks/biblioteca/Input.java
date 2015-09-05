@@ -11,6 +11,10 @@ public class Input {
     }
 
     public int getOption() {
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            return -1;
+        }
     }
 }
