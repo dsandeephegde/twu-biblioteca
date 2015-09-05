@@ -21,13 +21,19 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         Input input = new Input(scanner);
         int option = input.getOption();
-        if(option == 1) {
-            ArrayList<Book> books = new ArrayList<Book>();
-            books.add(new Book("Twilight", "Stephenie Meyer", 2005));
-            books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-            BookList bookList = new BookList(books);
-            Display displayBookList = new Display(bookList.toString());
-            displayBookList.display();
+        while(option != -1) {
+            if (option == 1) {
+                ArrayList<Book> books = new ArrayList<Book>();
+                books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+                books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+                BookList bookList = new BookList(books);
+                Display displayBookList = new Display(bookList.toString());
+                displayBookList.display();
+            } else {
+                Display displayBookList = new Display("Select a valid option!");
+                displayBookList.display();
+            }
+            option = input.getOption();
         }
     }
 }
