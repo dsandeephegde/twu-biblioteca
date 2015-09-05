@@ -26,6 +26,7 @@
                 <pathelement location="out"/>
             </classpath>
             <test name="com.thoughtworks.biblioteca.DisplayTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.BookListTest" todir="."/>
         </junit>
     </target>
 </project>

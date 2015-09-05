@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 public class BookList {
 
-    private ArrayList<String> books;
+    private ArrayList<Book> books;
 
-    BookList(ArrayList<String> books) {
+    BookList(ArrayList<Book> books) {
         this.books = books;
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String book : books)
-            stringBuilder.append(book).append("\n");
+        for (Book book : books)
+            stringBuilder.append(book.toString()).append("\n");
         return stringBuilder.toString();
     }
 }

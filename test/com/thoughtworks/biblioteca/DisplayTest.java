@@ -33,13 +33,13 @@ public class DisplayTest {
 
     @Test
     public void shouldPrintListOfBooks() {
-        ArrayList<String> books = new ArrayList<String>();
-        books.add("Twilight");
-        books.add("Harry Potter");
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         BookList bookList = new BookList(books);
         Display display = new Display(bookList.toString());
         display.display();
 
-        assertEquals("Twilight" + "\n" + "Harry Potter" + "\n", outContent.toString());
+        assertEquals("Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", outContent.toString());
     }
 }
