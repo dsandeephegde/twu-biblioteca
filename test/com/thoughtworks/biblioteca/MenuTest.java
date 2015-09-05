@@ -15,11 +15,11 @@ public class MenuTest {
     @Test
     public void shouldDisplayMenuList() {
         ArrayList<String> options = new ArrayList<String>();
-        options.add("1. Book List");
+        options.add("1. List Books");
         Menu menu = new Menu(options);
         System.setOut(new PrintStream(outContent));
         menu.display();
-        assertEquals("1. Book List\n", outContent.toString());
+        assertEquals("1. List Books\n", outContent.toString());
         System.setOut(System.out);
     }
 }
