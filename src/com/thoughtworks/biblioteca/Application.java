@@ -9,10 +9,14 @@ public class Application {
         application.start();
     }
 
-    private void start() {
+    public void start() {
         String welcome = "Welcome to Biblioteca\n";
         Display displayWelcome = new Display(welcome);
         displayWelcome.display();
+        ArrayList<String> options = new ArrayList<String>();
+        options.add("1. Book List");
+        Menu menu = new Menu(options);
+        menu.display();
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
