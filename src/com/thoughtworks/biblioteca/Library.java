@@ -35,7 +35,7 @@ public class Library {
 
     public void checkout(String bookName) {
         for(Book book: books) {
-            if(bookName.equals(book.toString().split("\t")[0])) {
+            if(book.hasName(bookName)) {
                 checkedOutBooks.set(books.indexOf(book), true);
             }
         }

@@ -17,4 +17,8 @@ public class Input {
             return -1;
         }
     }
+
+    public String getString() {
+        return scanner.nextLine();
+    }
 }

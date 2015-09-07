@@ -1,6 +1,7 @@
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
 
@@ -25,6 +26,10 @@ public class Menu {
             library.displayBookList();
         } else if (option == 2) {
             System.exit(0);
+        } else if(option == 3) {
+            Input input = new Input(new Scanner(System.in));
+            String book = input.getString();
+            library.checkout(book);
         } else {
             Display display = new Display("Select a valid option!\n");
             display.display();

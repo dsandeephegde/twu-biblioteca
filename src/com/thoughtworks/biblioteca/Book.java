@@ -16,4 +16,8 @@ public class Book {
     public String toString() {
         return name + "\t" + author + "\t" + yearPublished;
     }
+
+    public boolean hasName(String bookName) {
+        return name.equals(bookName);
+    }
 }

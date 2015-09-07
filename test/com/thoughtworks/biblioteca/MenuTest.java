@@ -61,8 +61,15 @@ public class MenuTest {
         System.setOut(new PrintStream(outContent));
         Library library = mock(Library.class);
         Menu menu = new Menu(menus, library);
-        menu.selectOption(3);
+        menu.selectOption(10);
         assertEquals("Select a valid option!\n", outContent.toString());
         System.setOut(System.out);
+    }
+
+    @Test
+    public void shouldCheckOutBookOnSelectingCheckOutOption() {
+        Menu menu = mock(Menu.class);
+        menu.selectOption(3);
+        verify(menu).selectOption(3);
     }
 }

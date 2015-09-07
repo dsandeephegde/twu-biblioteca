@@ -23,6 +23,7 @@ public class Application {
         ArrayList<String> menuItems = new ArrayList<String>();
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
+        menuItems.add("3. CheckOut");
         Menu menu = new Menu(menuItems, library);
 
         menu.display();
