@@ -33,6 +33,7 @@ public class Application {
         int option = input.getOption();
         while(true) {
             menu.selectOption(option);
+            menu.display();
             option = input.getOption();
         }
     }

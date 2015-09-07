@@ -1,4 +1,7 @@
 out
 Biblioteca.iml
 .idea
+/instrumented
+/cobertura.ser
+/reports
 .DS_Store

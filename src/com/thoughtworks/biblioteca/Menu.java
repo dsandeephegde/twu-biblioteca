@@ -22,17 +22,21 @@ public class Menu {
     }
 
     public void selectOption(int option) {
-        if (option == 1) {
-            library.displayBookList();
-        } else if (option == 2) {
-            System.exit(0);
-        } else if(option == 3) {
-            Input input = new Input(new Scanner(System.in));
-            String book = input.getString();
-            library.checkout(book);
-        } else {
-            Display display = new Display("Select a valid option!\n");
-            display.display();
+        switch (option) {
+            case 1:
+                library.displayBookList();
+                break;
+            case 2:
+                System.exit(0);
+            case 3:
+                Input input = new Input(new Scanner(System.in));
+                String book = input.getString();
+                library.checkout(book);
+                break;
+            default:
+                Display display = new Display("Select a valid option!\n");
+                display.display();
+                break;
         }
     }
 }
