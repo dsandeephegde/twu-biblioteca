@@ -1,5 +1,5 @@
 <?xml version = "1.0" ?>
-<project name="Calculator" default="coverage" basedir=".">
+<project name="Biblioteca" default="coverage" basedir=".">
 
 <property name = "project.name" value="Biblioteca" />
 <property name = "main.name" value = "Application"/>
