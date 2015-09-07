@@ -8,6 +8,7 @@
             <classpath location="lib/hamcrest-core-1.3.jar"/>
             <classpath location="lib/hamcrest-library-1.3.jar"/>
             <classpath location="lib/mockito-all-1.9.5.jar"/>
+            <classpath location="lib/system-rules-1.12.0.jar"/>
         </javac>
     </target>
 
@@ -23,11 +24,15 @@
                 <pathelement location="lib/hamcrest-core-1.3.jar"/>
                 <pathelement location="lib/hamcrest-library-1.3.jar"/>
                 <pathelement location="lib/mockito-all-1.9.5.jar"/>
+                <pathelement location="lib/system-rules-1.12.0.jar"/>
                 <pathelement location="out"/>
             </classpath>
             <test name="com.thoughtworks.biblioteca.DisplayTest" todir="."/>
-            <test name="com.thoughtworks.biblioteca.BookListTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.LibraryTest" todir="."/>
             <test name="com.thoughtworks.biblioteca.BookTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.ApplicationTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.InputTest" todir="."/>
+            <test name="com.thoughtworks.biblioteca.MenuTest" todir="."/>
         </junit>
     </target>
 </project>

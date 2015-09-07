@@ -3,11 +3,11 @@ package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
 
-public class BookList {
+public class Library {
 
     private ArrayList<Book> books;
 
-    BookList(ArrayList<Book> books) {
+    Library(ArrayList<Book> books) {
         this.books = books;
     }
 
@@ -18,5 +18,10 @@ public class BookList {
         for (Book book : books)
             stringBuilder.append(book.toString()).append("\n");
         return stringBuilder.toString();
+    }
+
+    public void displayBookList() {
+        Display display = new Display(toString());
+        display.display();
     }
 }

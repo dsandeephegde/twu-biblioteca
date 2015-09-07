@@ -5,16 +5,29 @@ import java.util.ArrayList;
 public class Menu {
 
     ArrayList<String> menuList = new ArrayList<String>();
+    Library library;
 
-    Menu(ArrayList<String> menuList) {
+    Menu(ArrayList<String> menuList, Library library) {
         this.menuList = menuList;
+        this.library = library;
     }
 
     public void display() {
         String menuString = "";
-        for(String menuItem : menuList)
+        for (String menuItem : menuList)
             menuString += menuItem + "\n";
         Display display = new Display(menuString);
         display.display();
+    }
+
+    public void selectOption(int option) {
+        if (option == 1) {
+            library.displayBookList();
+        } else if (option == 2) {
+            System.exit(0);
+        } else {
+            Display display = new Display("Select a valid option!\n");
+            display.display();
+        }
     }
 }

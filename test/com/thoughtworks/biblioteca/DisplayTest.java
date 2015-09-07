@@ -36,9 +36,8 @@ public class DisplayTest {
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        BookList bookList = new BookList(books);
-        Display display = new Display(bookList.toString());
-        display.display();
+        Library library = new Library(books);
+        library.displayBookList();
 
         assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", outContent.toString());
     }
