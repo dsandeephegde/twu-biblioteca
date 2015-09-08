@@ -24,7 +24,8 @@ public class MenuTest {
         ArrayList<String> options = new ArrayList<String>();
         options.add("1. List Books");
         Library library = mock(Library.class);
-        Menu menu = new Menu(options, library);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(options, library, input);
         System.setOut(new PrintStream(outContent));
         menu.display();
         assertEquals("1. List Books\n", outContent.toString());
@@ -36,8 +37,9 @@ public class MenuTest {
         ArrayList<String> menus = new ArrayList<String>();
         menus.add("1. List Books");
         Library library = mock(Library.class);
-        Menu menu = new Menu(menus, library);
-        menu.selectOption(1);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
+        menu.selectMenuItem("1").performOperation();
         verify(library).displayBookList();
     }
 
@@ -47,9 +49,10 @@ public class MenuTest {
         menus.add("1. List Books");
         menus.add("2. Quit");
         Library library = mock(Library.class);
-        Menu menu = new Menu(menus, library);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
         exit.expectSystemExitWithStatus(0);
-        menu.selectOption(2);
+        menu.selectMenuItem("2").performOperation();
     }
 
     @Test
@@ -60,16 +63,23 @@ public class MenuTest {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         Library library = mock(Library.class);
-        Menu menu = new Menu(menus, library);
-        menu.selectOption(10);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
+        menu.selectMenuItem("10").performOperation();
         assertEquals("Select a valid option!\n", outContent.toString());
         System.setOut(System.out);
     }
 
     @Test
     public void shouldCheckOutBookOnSelectingCheckOutOption() {
-        Menu menu = mock(Menu.class);
-        menu.selectOption(3);
-        verify(menu).selectOption(3);
+        ArrayList<String> menus = new ArrayList<String>();
+        menus.add("1. List Books");
+        menus.add("2. Quit");
+        Library library = mock(Library.class);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
+        menu.selectMenuItem("3").performOperation();
+        verify(input).getInput();
+        verify(library).checkout(input.getInput());
     }
 }

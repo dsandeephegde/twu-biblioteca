@@ -1,16 +1,17 @@
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Menu {
 
-    ArrayList<String> menuList = new ArrayList<String>();
-    Library library;
+    private ArrayList<String> menuList = new ArrayList<String>();
+    private Library library;
+    private Input input;
 
-    Menu(ArrayList<String> menuList, Library library) {
+    Menu(ArrayList<String> menuList, Library library, Input input) {
         this.menuList = menuList;
         this.library = library;
+        this.input = input;
     }
 
     public void display() {
@@ -21,22 +22,20 @@ public class Menu {
         display.display();
     }
 
-    public void selectOption(int option) {
+    public MenuItem selectMenuItem(String inputString) {
+        int option = 0;
+        try {
+            option = Integer.parseInt(inputString);
+        } catch (Exception ignored) {
+        }
         switch (option) {
             case 1:
-                library.displayBookList();
-                break;
+                return new ListBooks(library);
             case 2:
-                System.exit(0);
+                return new Quit();
             case 3:
-                Input input = new Input(new Scanner(System.in));
-                String book = input.getString();
-                library.checkout(book);
-                break;
-            default:
-                Display display = new Display("Select a valid option!\n");
-                display.display();
-                break;
+                return new CheckOutBook(library, input);
         }
+        return new InvalidMenuItem();
     }
 }

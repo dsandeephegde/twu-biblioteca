@@ -20,21 +20,21 @@ public class Application {
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
 
+        Scanner scanner = new Scanner(System.in);
+        Input input = new Input(scanner);
+
         ArrayList<String> menuItems = new ArrayList<String>();
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
         menuItems.add("3. CheckOut");
-        Menu menu = new Menu(menuItems, library);
+        Menu menu = new Menu(menuItems, library, input);
 
         menu.display();
 
-        Scanner scanner = new Scanner(System.in);
-        Input input = new Input(scanner);
-        int option = input.getOption();
         while(true) {
-            menu.selectOption(option);
+            MenuItem menuItem = menu.selectMenuItem(input.getInput());
+            menuItem.performOperation();
             menu.display();
-            option = input.getOption();
         }
     }
 }

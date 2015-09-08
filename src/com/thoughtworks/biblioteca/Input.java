@@ -10,15 +10,7 @@ public class Input {
         this.scanner = scanner;
     }
 
-    public int getOption() {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-
-    public String getString() {
+    public String getInput() {
         return scanner.nextLine();
     }
 }
