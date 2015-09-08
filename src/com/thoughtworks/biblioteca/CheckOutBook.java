@@ -13,6 +13,13 @@ public class CheckOutBook implements MenuItem {
     @Override
     public void performOperation() {
         String bookName = input.getInput();
-        library.checkout(bookName);
+        if(library.checkout(bookName)) {
+            Display display = new Display("Thank you! Enjoy the book\n");
+            display.display();
+        }
+        else {
+            Display display = new Display("That book is not available\n");
+            display.display();
+        }
     }
 }

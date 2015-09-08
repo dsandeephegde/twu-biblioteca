@@ -33,11 +33,13 @@ public class Library {
         display.display();
     }
 
-    public void checkout(String bookName) {
+    public Boolean checkout(String bookName) {
         for(Book book: books) {
             if(book.hasName(bookName)) {
                 checkedOutBooks.set(books.indexOf(book), true);
+                return true;
             }
         }
+        return false;
     }
 }
