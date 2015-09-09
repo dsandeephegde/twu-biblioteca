@@ -35,6 +35,8 @@ public class Menu {
                 return new Quit();
             case 3:
                 return new CheckOutBook(library, input);
+            case 4:
+                return new ReturnBook(library, input);
         }
         return new InvalidMenuItem();
     }

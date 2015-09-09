@@ -27,6 +27,7 @@ public class Application {
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
         menuItems.add("3. CheckOut");
+        menuItems.add("4. Return");
         Menu menu = new Menu(menuItems, library, input);
 
         menu.display();

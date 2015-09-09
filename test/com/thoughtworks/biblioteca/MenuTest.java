@@ -100,4 +100,17 @@ public class MenuTest {
         assertEquals("Select a valid option!\n", outContent.toString());
         System.setOut(System.out);
     }
+
+    @Test
+    public void shouldReturnBookOnSelectingReturnOption() {
+        ArrayList<String> menus = new ArrayList<String>();
+        menus.add("1. List Books");
+        menus.add("2. Quit");
+        Library library = mock(Library.class);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
+        menu.selectMenuItem("4").performOperation();
+        verify(input).getInput();
+        verify(library).returnBook(input.getInput());
+    }
 }
