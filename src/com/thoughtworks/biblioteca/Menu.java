@@ -8,7 +8,7 @@ public class Menu {
     private Library library;
     private Input input;
 
-    Menu(ArrayList<String> menuList, Library library, Input input) {
+    public Menu(ArrayList<String> menuList, Library library, Input input) {
         this.menuList = menuList;
         this.library = library;
         this.input = input;
@@ -22,21 +22,15 @@ public class Menu {
         display.display();
     }
 
-    public MenuItem selectMenuItem(String inputString) {
-        int option = 0;
-        try {
-            option = Integer.parseInt(inputString);
-        } catch (Exception ignored) {
-        }
-        switch (option) {
-            case 1:
-                return new ListBooks(library);
-            case 2:
-                return new Quit();
-            case 3:
-                return new CheckOutBook(library, input);
-            case 4:
-                return new ReturnBook(library, input);
+    public MenuItem selectMenuItem(String option) {
+        if (option.equals("1")) {
+            return new ListBooks(library);
+        } else if (option.equals("2")) {
+            return new Quit();
+        } else if (option.equals("3")) {
+            return new CheckOutBook(library, input);
+        } else if (option.equals("4")) {
+            return new ReturnBook(library, input);
         }
         return new InvalidMenuItem();
     }

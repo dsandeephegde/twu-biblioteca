@@ -4,7 +4,7 @@ public class ListBooks implements MenuItem {
 
     private Library library;
 
-    ListBooks(Library library) {
+    public ListBooks(Library library) {
         this.library = library;
     }
 

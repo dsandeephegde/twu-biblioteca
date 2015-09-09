@@ -8,7 +8,7 @@ public class Library {
     private ArrayList<Book> books;
     private ArrayList<Boolean> checkedOutBooks;
 
-    Library(ArrayList<Book> books) {
+    public Library(ArrayList<Book> books) {
         this.books = books;
         checkedOutBooks = new ArrayList<Boolean>();
         for (int i = 0; i < books.size(); i++) {

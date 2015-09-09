@@ -6,7 +6,7 @@ public class Input {
 
     Scanner scanner;
 
-    Input(Scanner scanner) {
+    public Input(Scanner scanner) {
         this.scanner = scanner;
     }
 

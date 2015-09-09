@@ -5,7 +5,7 @@ public class Display {
 
     String message;
 
-    Display(String message) {
+    public Display(String message) {
         this.message = message;
     }
 
