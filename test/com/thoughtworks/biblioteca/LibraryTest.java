@@ -26,4 +26,15 @@ public class LibraryTest {
         library.checkout("Harry Potter");
         assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n", library.toString());
     }
+
+    @Test
+    public void shouldReturnBookToLibrary() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Library library = new Library(books);
+        library.checkout("Harry Potter");
+        library.returnBook("Harry Potter");
+        assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", library.toString());
+    }
 }

@@ -44,6 +44,10 @@ public class Library {
     }
 
     public void returnBook(String bookName) {
-
+        for (Book book : books) {
+            if (book.hasName(bookName)) {
+                checkedOutBooks.set(books.indexOf(book), false);
+            }
+        }
     }
 }
