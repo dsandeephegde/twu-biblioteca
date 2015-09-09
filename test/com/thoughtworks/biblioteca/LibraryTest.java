@@ -64,4 +64,13 @@ public class LibraryTest {
         library.checkoutBook("Harry Potter");
         assertEquals(false, library.returnBook("Harry Potter 3"));
     }
+
+    @Test
+    public void shouldNotReturnBookToLibraryIfAlreadyAvailable() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Library library = new Library(books);
+        assertEquals(false, library.returnBook("Harry Potter"));
+    }
 }
