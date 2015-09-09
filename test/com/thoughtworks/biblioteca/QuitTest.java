@@ -11,7 +11,7 @@ public class QuitTest {
 
     @Test
     public void shouldQuitApplicationOnPerformOperation() {
-        Quit quit = new Quit();
+        MenuItem quit = new Quit();
         exit.expectSystemExitWithStatus(0);
         quit.performOperation();
     }
