@@ -23,7 +23,7 @@ public class CheckOutBookTest {
     }
 
     @Test
-    public void shouldDisplayThankYouForSuccessfulReturn() {
+    public void shouldDisplayThankYouForSuccessfulCheckout() {
         Library library = mock(Library.class);
         Input input = mock(Input.class);
         when(library.checkout(input.getInput())).thenReturn(true);
@@ -38,7 +38,7 @@ public class CheckOutBookTest {
     }
 
     @Test
-    public void shouldDisplayNotAvailableForUnsuccessfulReturn() {
+    public void shouldDisplayNotAvailableForUnsuccessfulCheckout() {
         Library library = mock(Library.class);
         Input input = mock(Input.class);
         when(library.checkout(input.getInput())).thenReturn(false);

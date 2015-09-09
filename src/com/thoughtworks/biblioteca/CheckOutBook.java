@@ -16,8 +16,7 @@ public class CheckOutBook implements MenuItem {
         if(library.checkout(bookName)) {
             Display display = new Display("Thank you! Enjoy the book\n");
             display.display();
-        }
-        else {
+        } else {
             Display display = new Display("That book is not available\n");
             display.display();
         }

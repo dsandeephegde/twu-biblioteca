@@ -43,11 +43,13 @@ public class Library {
         return false;
     }
 
-    public void returnBook(String bookName) {
+    public Boolean returnBook(String bookName) {
         for (Book book : books) {
             if (book.hasName(bookName)) {
                 checkedOutBooks.set(books.indexOf(book), false);
+                return true;
             }
         }
+        return false;
     }
 }

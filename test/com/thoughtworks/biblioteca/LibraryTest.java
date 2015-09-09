@@ -23,8 +23,16 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
-        library.checkout("Harry Potter");
-        assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n", library.toString());
+        assertEquals(true, library.checkout("Harry Potter"));
+    }
+
+    @Test
+    public void shouldNotCheckOutBookFromLibraryIfNotPresent() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Library library = new Library(books);
+        assertEquals(false, library.checkout("Harry Potter 3"));
     }
 
     @Test
@@ -34,7 +42,16 @@ public class LibraryTest {
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
         library.checkout("Harry Potter");
-        library.returnBook("Harry Potter");
-        assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", library.toString());
+        assertEquals(true, library.returnBook("Harry Potter"));
+    }
+
+    @Test
+    public void shouldNotReturnBookToLibraryIfNotALibraryBook() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Library library = new Library(books);
+        library.checkout("Harry Potter");
+        assertEquals(false, library.returnBook("Harry Potter 3"));
     }
 }

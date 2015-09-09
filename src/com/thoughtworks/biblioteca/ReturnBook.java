@@ -13,6 +13,12 @@ public class ReturnBook implements MenuItem {
     @Override
     public void performOperation() {
         String bookName = input.getInput();
-        library.returnBook(bookName);
+        if(library.returnBook(bookName)) {
+            Display display = new Display("Thank you for returning the book\n");
+            display.display();
+        } else {
+            Display display = new Display("That is not a valid book to return\n");
+            display.display();
+        }
     }
 }
