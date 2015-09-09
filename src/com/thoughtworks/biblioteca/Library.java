@@ -1,4 +1,4 @@
-//Stores the List of Books
+//Stores the List of Books which can be checked out or returned
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
@@ -7,9 +7,11 @@ public class Library {
 
     private ArrayList<Book> books;
     private ArrayList<Boolean> checkedOutBooks;
+    private View view;
 
-    public Library(ArrayList<Book> books) {
+    public Library(ArrayList<Book> books, View view) {
         this.books = books;
+        this.view = view;
         checkedOutBooks = new ArrayList<Boolean>();
         for (int i = 0; i < books.size(); i++) {
             checkedOutBooks.add(false);
@@ -29,8 +31,7 @@ public class Library {
     }
 
     public void displayBookList() {
-        Display display = new Display(toString());
-        display.display();
+        view.output(toString());
     }
 
     public Boolean checkoutBook(String bookName) {

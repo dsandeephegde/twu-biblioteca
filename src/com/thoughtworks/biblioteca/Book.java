@@ -1,3 +1,4 @@
+//Stores name,author and year published of a book
 package com.thoughtworks.biblioteca;
 
 public class Book {

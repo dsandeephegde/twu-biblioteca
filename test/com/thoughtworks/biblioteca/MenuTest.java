@@ -25,12 +25,12 @@ public class MenuTest {
         options.add("1. List Books");
         options.add("2. Quit");
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(options, library, input);
-        System.setOut(new PrintStream(outContent));
+        View view = mock(View.class);
+        Menu menu = new Menu(options, library, view);
+
         menu.display();
-        assertEquals("1. List Books\n2. Quit\n", outContent.toString());
-        System.setOut(System.out);
+
+        verify(view).output("1. List Books\n2. Quit\n");
     }
 
     @Test
@@ -38,9 +38,11 @@ public class MenuTest {
         ArrayList<String> menus = new ArrayList<String>();
         menus.add("1. List Books");
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
+
         menu.selectMenuItem("1").performOperation();
+
         verify(library).displayBookList();
     }
 
@@ -50,9 +52,11 @@ public class MenuTest {
         menus.add("1. List Books");
         menus.add("2. Quit");
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
+
         exit.expectSystemExitWithStatus(0);
+
         menu.selectMenuItem("2").performOperation();
     }
 
@@ -61,14 +65,13 @@ public class MenuTest {
         ArrayList<String> menus = new ArrayList<String>();
         menus.add("1. List Books");
         menus.add("2. Quit");
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
+
         menu.selectMenuItem("10").performOperation();
-        assertEquals("Select a valid option!\n", outContent.toString());
-        System.setOut(System.out);
+
+        verify(view).output("Select a valid option!\n");
     }
 
     @Test
@@ -77,11 +80,12 @@ public class MenuTest {
         menus.add("1. List Books");
         menus.add("2. Quit");
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
+
         menu.selectMenuItem("3").performOperation();
-        verify(input).getInput();
-        verify(library).checkoutBook(input.getInput());
+
+        verify(library).checkoutBook(view.input());
     }
 
     @Test
@@ -89,16 +93,13 @@ public class MenuTest {
         ArrayList<String> menus = new ArrayList<String>();
         menus.add("1. List Books");
         menus.add("2. Quit");
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
 
         menu.selectMenuItem("invalid").performOperation();
 
-        assertEquals("Select a valid option!\n", outContent.toString());
-        System.setOut(System.out);
+        verify(view).output("Select a valid option!\n");
     }
 
     @Test
@@ -107,10 +108,11 @@ public class MenuTest {
         menus.add("1. List Books");
         menus.add("2. Quit");
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        Menu menu = new Menu(menus, library, input);
+        View view = mock(View.class);
+        Menu menu = new Menu(menus, library, view);
+
         menu.selectMenuItem("4").performOperation();
-        verify(input).getInput();
-        verify(library).returnBook(input.getInput());
+
+        verify(library).returnBook(view.input());
     }
 }

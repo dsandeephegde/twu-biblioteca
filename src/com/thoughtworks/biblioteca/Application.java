@@ -1,5 +1,7 @@
+//It has main method of application which starts the application
 package com.thoughtworks.biblioteca;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,29 +13,29 @@ public class Application {
     }
 
     public void start() {
-        String welcome = "Welcome to Biblioteca\n";
-        Display displayWelcome = new Display(welcome);
-        displayWelcome.display();
+        PrintStream printStream = new PrintStream(System.out);
+        Scanner scanner = new Scanner(System.in);
+        View view = new View(scanner, printStream);
+
+        view.output("Welcome to Biblioteca");
 
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        Library library = new Library(books);
+        Library library = new Library(books, view);
 
-        Scanner scanner = new Scanner(System.in);
-        Input input = new Input(scanner);
 
         ArrayList<String> menuItems = new ArrayList<String>();
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
         menuItems.add("3. CheckOut");
         menuItems.add("4. Return");
-        Menu menu = new Menu(menuItems, library, input);
+        Menu menu = new Menu(menuItems, library, view);
 
         menu.display();
 
         while(true) {
-            MenuItem menuItem = menu.selectMenuItem(input.getInput());
+            MenuItem menuItem = menu.selectMenuItem(view.input());
             menuItem.performOperation();
             menu.display();
         }

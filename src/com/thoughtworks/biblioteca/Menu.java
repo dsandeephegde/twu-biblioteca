@@ -1,3 +1,4 @@
+//Menu is the Main menu of application which has menu options and menu item
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
@@ -8,28 +9,27 @@ public class Menu {
     private ArrayList<String> menuList = new ArrayList<String>();
     private HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
     private Library library;
-    private Input input;
+    private View view;
 
-    public Menu(ArrayList<String> menuList, Library library, Input input) {
+    public Menu(ArrayList<String> menuList, Library library, View view) {
         this.menuList = menuList;
         this.library = library;
-        this.input = input;
+        this.view = view;
     }
 
     public void display() {
         String menuString = "";
         for (String menuItem : menuList)
             menuString += menuItem + "\n";
-        Display display = new Display(menuString);
-        display.display();
+        view.output(menuString);
     }
 
     private void configureHash(){
         menuItems.put("1", new ListBooks(library));
         menuItems.put("2", new Quit());
-        menuItems.put("3", new CheckOutBook(library, input));
-        menuItems.put("4", new ReturnBook(library, input));
-        menuItems.put("invalid", new InvalidMenuItem());
+        menuItems.put("3", new CheckOutBook(library, view));
+        menuItems.put("4", new ReturnBook(library, view));
+        menuItems.put("invalid", new InvalidMenuItem(view));
     }
 
     public MenuItem selectMenuItem(String option) {

@@ -1,3 +1,4 @@
+//It is Menu Item which does Quit operation
 package com.thoughtworks.biblioteca;
 
 import static java.lang.System.*;

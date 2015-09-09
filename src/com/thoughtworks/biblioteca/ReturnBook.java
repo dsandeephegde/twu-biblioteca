@@ -1,24 +1,22 @@
+//It is Menu Item which does return book operation
 package com.thoughtworks.biblioteca;
 
 public class ReturnBook implements MenuItem {
 
     private Library library;
-    private Input input;
+    private View view;
 
-    public ReturnBook(Library library, Input input) {
+    public ReturnBook(Library library, View view) {
         this.library = library;
-        this.input = input;
+        this.view = view;
     }
 
     @Override
     public void performOperation() {
-        String bookName = input.getInput();
-        if(library.returnBook(bookName)) {
-            Display display = new Display("Thank you for returning the book\n");
-            display.display();
-        } else {
-            Display display = new Display("That is not a valid book to return\n");
-            display.display();
-        }
+        String bookName = view.input();
+        if(library.returnBook(bookName))
+            view.output("Thank you for returning the book\n");
+        else
+            view.output("That is not a valid book to return\n");
     }
 }

@@ -1,24 +1,22 @@
+//It is Menu Item which does checkout book operation
 package com.thoughtworks.biblioteca;
 
 public class CheckOutBook implements MenuItem {
 
     private Library library;
-    private Input input;
+    private View view;
 
-    public CheckOutBook(Library library,Input input) {
+    public CheckOutBook(Library library,View view) {
         this.library = library;
-        this.input = input;
+        this.view = view;
     }
 
     @Override
     public void performOperation() {
-        String bookName = input.getInput();
-        if(library.checkoutBook(bookName)) {
-            Display display = new Display("Thank you! Enjoy the book\n");
-            display.display();
-        } else {
-            Display display = new Display("That book is not available\n");
-            display.display();
-        }
+        String bookName = view.input();
+        if(library.checkoutBook(bookName))
+            view.output("Thank you! Enjoy the book\n");
+         else
+             view.output("That book is not available\n");
     }
 }

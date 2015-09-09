@@ -15,40 +15,34 @@ public class CheckOutBookTest {
     @Test
     public void shouldCallCheckOut() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        CheckOutBook checkOutBook = new CheckOutBook(library, input);
+        View view = mock(View.class);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view);
         checkOutBook.performOperation();
-        verify(input).getInput();
-        verify(library).checkoutBook(input.getInput());
+        verify(view).input();
+        verify(library).checkoutBook(view.input());
     }
 
     @Test
     public void shouldDisplayThankYouForSuccessfulCheckout() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        when(library.checkoutBook(input.getInput())).thenReturn(true);
-        CheckOutBook checkOutBook = new CheckOutBook(library, input);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        View view = mock(View.class);
+        when(library.checkoutBook(view.input())).thenReturn(true);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view);
 
         checkOutBook.performOperation();
 
-        assertEquals("Thank you! Enjoy the book\n", outContent.toString());
-        System.setOut(System.out);
+        verify(view).output("Thank you! Enjoy the book\n");
     }
 
     @Test
     public void shouldDisplayNotAvailableForUnsuccessfulCheckout() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        when(library.checkoutBook(input.getInput())).thenReturn(false);
-        CheckOutBook checkOutBook = new CheckOutBook(library, input);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        View view = mock(View.class);
+        when(library.checkoutBook(view.input())).thenReturn(false);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view);
 
         checkOutBook.performOperation();
 
-        assertEquals("That book is not available\n", outContent.toString());
-        System.setOut(System.out);
+        verify(view).output("That book is not available\n");
     }
 }

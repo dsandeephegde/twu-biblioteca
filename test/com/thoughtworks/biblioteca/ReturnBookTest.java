@@ -15,40 +15,35 @@ public class ReturnBookTest {
     @Test
     public void shouldCallReturnBook() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        ReturnBook returnBook = new ReturnBook(library, input);
+        View view = mock(View.class);
+        ReturnBook returnBook = new ReturnBook(library, view);
+
         returnBook.performOperation();
-        verify(input).getInput();
-        verify(library).returnBook(input.getInput());
+
+        verify(library).returnBook(view.input());
     }
 
     @Test
     public void shouldDisplayThankYouForSuccessfulReturn() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        when(library.returnBook(input.getInput())).thenReturn(true);
-        ReturnBook returnBook = new ReturnBook(library, input);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        View view = mock(View.class);
+        when(library.returnBook(view.input())).thenReturn(true);
+        ReturnBook returnBook = new ReturnBook(library, view);
 
         returnBook.performOperation();
 
-        assertEquals("Thank you for returning the book\n", outContent.toString());
-        System.setOut(System.out);
+        verify(view).output("Thank you for returning the book\n");
     }
 
     @Test
     public void shouldDisplayNotValidBookForUnsuccessfulReturn() {
         Library library = mock(Library.class);
-        Input input = mock(Input.class);
-        when(library.returnBook(input.getInput())).thenReturn(false);
-        ReturnBook returnBook = new ReturnBook(library, input);
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        View view = mock(View.class);
+        when(library.returnBook(view.input())).thenReturn(false);
+        ReturnBook returnBook = new ReturnBook(library, view);
 
         returnBook.performOperation();
 
-        assertEquals("That is not a valid book to return\n", outContent.toString());
-        System.setOut(System.out);
+        verify(view).output("That is not a valid book to return\n");
     }
 }
