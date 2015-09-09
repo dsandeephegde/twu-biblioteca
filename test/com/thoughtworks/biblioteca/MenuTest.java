@@ -81,7 +81,7 @@ public class MenuTest {
         Menu menu = new Menu(menus, library, input);
         menu.selectMenuItem("3").performOperation();
         verify(input).getInput();
-        verify(library).checkout(input.getInput());
+        verify(library).checkoutBook(input.getInput());
     }
 
     @Test

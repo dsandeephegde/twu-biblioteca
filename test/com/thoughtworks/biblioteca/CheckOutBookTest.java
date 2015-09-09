@@ -19,14 +19,14 @@ public class CheckOutBookTest {
         CheckOutBook checkOutBook = new CheckOutBook(library, input);
         checkOutBook.performOperation();
         verify(input).getInput();
-        verify(library).checkout(input.getInput());
+        verify(library).checkoutBook(input.getInput());
     }
 
     @Test
     public void shouldDisplayThankYouForSuccessfulCheckout() {
         Library library = mock(Library.class);
         Input input = mock(Input.class);
-        when(library.checkout(input.getInput())).thenReturn(true);
+        when(library.checkoutBook(input.getInput())).thenReturn(true);
         CheckOutBook checkOutBook = new CheckOutBook(library, input);
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -41,7 +41,7 @@ public class CheckOutBookTest {
     public void shouldDisplayNotAvailableForUnsuccessfulCheckout() {
         Library library = mock(Library.class);
         Input input = mock(Input.class);
-        when(library.checkout(input.getInput())).thenReturn(false);
+        when(library.checkoutBook(input.getInput())).thenReturn(false);
         CheckOutBook checkOutBook = new CheckOutBook(library, input);
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));

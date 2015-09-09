@@ -23,7 +23,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
-        assertEquals(true, library.checkout("Harry Potter"));
+        assertEquals(true, library.checkoutBook("Harry Potter"));
     }
 
     @Test
@@ -32,7 +32,17 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
-        assertEquals(false, library.checkout("Harry Potter 3"));
+        assertEquals(false, library.checkoutBook("Harry Potter 3"));
+    }
+
+    @Test
+    public void shouldNotCheckOutBookIfAlreadyCheckedOut() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Library library = new Library(books);
+        library.checkoutBook("Harry Potter");
+        assertEquals(false, library.checkoutBook("Harry Potter"));
     }
 
     @Test
@@ -41,7 +51,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
         assertEquals(true, library.returnBook("Harry Potter"));
     }
 
@@ -51,7 +61,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books);
-        library.checkout("Harry Potter");
+        library.checkoutBook("Harry Potter");
         assertEquals(false, library.returnBook("Harry Potter 3"));
     }
 }

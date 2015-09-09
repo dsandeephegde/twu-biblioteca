@@ -1,10 +1,12 @@
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Menu {
 
     private ArrayList<String> menuList = new ArrayList<String>();
+    private HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
     private Library library;
     private Input input;
 
@@ -22,16 +24,19 @@ public class Menu {
         display.display();
     }
 
+    private void configureHash(){
+        menuItems.put("1", new ListBooks(library));
+        menuItems.put("2", new Quit());
+        menuItems.put("3", new CheckOutBook(library, input));
+        menuItems.put("4", new ReturnBook(library, input));
+        menuItems.put("invalid", new InvalidMenuItem());
+    }
+
     public MenuItem selectMenuItem(String option) {
-        if (option.equals("1")) {
-            return new ListBooks(library);
-        } else if (option.equals("2")) {
-            return new Quit();
-        } else if (option.equals("3")) {
-            return new CheckOutBook(library, input);
-        } else if (option.equals("4")) {
-            return new ReturnBook(library, input);
-        }
-        return new InvalidMenuItem();
+        configureHash();
+        MenuItem menuItem = menuItems.get(option);
+        if(menuItem == null)
+            return menuItems.get("invalid");
+        return menuItem;
     }
 }

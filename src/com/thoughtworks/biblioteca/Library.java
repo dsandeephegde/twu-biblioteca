@@ -33,9 +33,9 @@ public class Library {
         display.display();
     }
 
-    public Boolean checkout(String bookName) {
+    public Boolean checkoutBook(String bookName) {
         for(Book book: books) {
-            if(book.hasName(bookName)) {
+            if(book.hasName(bookName) && !checkedOutBooks.get(books.indexOf(book))) {
                 checkedOutBooks.set(books.indexOf(book), true);
                 return true;
             }
