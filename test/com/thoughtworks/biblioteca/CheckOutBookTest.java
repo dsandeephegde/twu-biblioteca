@@ -28,7 +28,6 @@ public class CheckOutBookTest {
         Input input = mock(Input.class);
         when(library.checkout(input.getInput())).thenReturn(true);
         CheckOutBook checkOutBook = new CheckOutBook(library, input);
-
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -44,7 +43,6 @@ public class CheckOutBookTest {
         Input input = mock(Input.class);
         when(library.checkout(input.getInput())).thenReturn(false);
         CheckOutBook checkOutBook = new CheckOutBook(library, input);
-
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 

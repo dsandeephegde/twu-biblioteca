@@ -23,12 +23,13 @@ public class MenuTest {
     public void shouldDisplayMenuList() {
         ArrayList<String> options = new ArrayList<String>();
         options.add("1. List Books");
+        options.add("2. Quit");
         Library library = mock(Library.class);
         Input input = mock(Input.class);
         Menu menu = new Menu(options, library, input);
         System.setOut(new PrintStream(outContent));
         menu.display();
-        assertEquals("1. List Books\n", outContent.toString());
+        assertEquals("1. List Books\n2. Quit\n", outContent.toString());
         System.setOut(System.out);
     }
 
@@ -81,5 +82,22 @@ public class MenuTest {
         menu.selectMenuItem("3").performOperation();
         verify(input).getInput();
         verify(library).checkout(input.getInput());
+    }
+
+    @Test
+    public void shouldReturnInvalidIfEnteredOptionIsInvalid() {
+        ArrayList<String> menus = new ArrayList<String>();
+        menus.add("1. List Books");
+        menus.add("2. Quit");
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        Library library = mock(Library.class);
+        Input input = mock(Input.class);
+        Menu menu = new Menu(menus, library, input);
+
+        menu.selectMenuItem("invalid").performOperation();
+
+        assertEquals("Select a valid option!\n", outContent.toString());
+        System.setOut(System.out);
     }
 }

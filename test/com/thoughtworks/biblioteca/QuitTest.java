@@ -11,8 +11,8 @@ public class QuitTest {
 
     @Test
     public void shouldQuitApplicationOnPerformOperation() {
-        exit.expectSystemExitWithStatus(0);
         Quit quit = new Quit();
+        exit.expectSystemExitWithStatus(0);
         quit.performOperation();
     }
 }
