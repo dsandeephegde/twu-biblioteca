@@ -21,4 +21,17 @@ public class Book {
     public boolean hasName(String bookName) {
         return name.equals(bookName);
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
+        Book book = (Book) that;
+        return name.equals(book.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
 }

@@ -17,7 +17,7 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         View view = new View(scanner, printStream);
 
-        view.output("Welcome to Biblioteca");
+        view.output("Welcome to Biblioteca\n");
 
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
@@ -36,8 +36,8 @@ public class Application {
 
         while(true) {
             MenuItem menuItem = menu.selectMenuItem(view.input());
-            menuItem.performOperation();
             menu.display();
+            menuItem.performOperation();
         }
     }
 }
