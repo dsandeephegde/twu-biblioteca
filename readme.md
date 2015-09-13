@@ -1,5 +1,5 @@
 #Problem description
-    Biblioteca is the the Library management system where user can checkout and return books and librarian can manage it.
+    Biblioteca is the the Library management system where user can checkout and return availableBooks and librarian can manage it.
         
 #Development environment setup
     Following software must be installed in your system.

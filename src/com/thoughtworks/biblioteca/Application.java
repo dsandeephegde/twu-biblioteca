@@ -36,8 +36,8 @@ public class Application {
 
         while(true) {
             MenuItem menuItem = menu.selectMenuItem(view.input());
-            menu.display();
             menuItem.performOperation();
+            menu.display();
         }
     }
 }

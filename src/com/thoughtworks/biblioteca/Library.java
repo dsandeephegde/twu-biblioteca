@@ -5,27 +5,22 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Book> books;
-    private ArrayList<Boolean> checkedOutBooks;
+    private ArrayList<Book> availableBooks;
+    private ArrayList<Book> checkedOutBooks;
     private View view;
 
-    public Library(ArrayList<Book> books, View view) {
-        this.books = books;
+    public Library(ArrayList<Book> availableBooks, View view) {
+        this.availableBooks = availableBooks;
+        this.checkedOutBooks = new ArrayList<Book>();
         this.view = view;
-        checkedOutBooks = new ArrayList<Boolean>();
-        for (int i = 0; i < books.size(); i++) {
-            checkedOutBooks.add(false);
-        }
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Book Name\t").append("Author\t").append("Year Published\n");
-        for (int i = 0; i < books.size(); i++) {
-            if(!checkedOutBooks.get(i)) {
-                stringBuilder.append(books.get(i).toString()).append("\n");
-            }
+        for(Book book : availableBooks) {
+            stringBuilder.append(book.toString()).append("\n");
         }
         return stringBuilder.toString();
     }
@@ -35,9 +30,11 @@ public class Library {
     }
 
     public Boolean checkoutBook(String bookName) {
-        for(Book book: books) {
-            if(book.hasName(bookName) && !checkedOutBooks.get(books.indexOf(book))) {
-                checkedOutBooks.set(books.indexOf(book), true);
+        Book searchableBook = new Book(bookName, null, 0);
+        for(Book book: availableBooks) {
+            if (book.equals(searchableBook)) {
+                checkedOutBooks.add(book);
+                availableBooks.remove(book);
                 return true;
             }
         }
@@ -45,9 +42,11 @@ public class Library {
     }
 
     public Boolean returnBook(String bookName) {
-        for (Book book : books) {
-            if (book.hasName(bookName) && checkedOutBooks.get(books.indexOf(book))) {
-                checkedOutBooks.set(books.indexOf(book), false);
+        Book searchableBook = new Book(bookName, null, 0);
+        for (Book book : checkedOutBooks) {
+            if (book.equals(searchableBook)) {
+                availableBooks.add(book);
+                checkedOutBooks.remove(book);
                 return true;
             }
         }
