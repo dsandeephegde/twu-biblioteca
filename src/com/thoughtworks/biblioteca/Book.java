@@ -27,7 +27,7 @@ public class Book {
         if (this == that) return true;
         if (that == null || getClass() != that.getClass()) return false;
         Book book = (Book) that;
-        return name.equals(book.name);
+            return name.equals(book.name);
     }
 
     @Override
