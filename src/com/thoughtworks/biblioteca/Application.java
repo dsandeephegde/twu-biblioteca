@@ -32,6 +32,7 @@ public class Application {
         menuItems.add("3. CheckOut Book");
         menuItems.add("4. Return Book");
         menuItems.add("5. List Movie");
+        menuItems.add("6. CheckOut Movie");
         Menu menu = new Menu(menuItems, library, view);
 
         Controller controller = new Controller(view, menu);
