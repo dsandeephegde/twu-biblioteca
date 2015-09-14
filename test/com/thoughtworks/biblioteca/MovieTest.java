@@ -11,4 +11,43 @@ public class MovieTest {
         Movie movie = new Movie("Bahubali", "S S Rajamauli", "9");
         assertEquals(String.format("%-40s%-40s%-40s", "Bahubali", "S S Rajamauli", "9"), movie.toString());
     }
+
+    @Test
+    public void shouldReturnTrueIfMoviesHaveSameName() {
+        Movie movie1 = new Movie("Bahubali", "S S Rajamauli", "9");
+        Movie movie2 = new Movie("Bahubali", "S. S. Rajamauli", "9");
+        assertEquals(movie1, movie2);
+    }
+
+    @Test
+    public void shouldReturnFalseIfMoviesHaveDifferentName() {
+        Movie movie1 = new Movie("Bahubali", "S S Rajamauli", "9");
+        Movie movie2 = new Movie("Bahubali 2", "S. S. Rajamauli", "9");
+        assertNotEquals(movie1, movie2);
+    }
+
+    @Test
+    public void shouldReturnTrueForSameMovie() {
+        Movie movie = new Movie("Bahubali", "S S Rajamauli", "9");
+        assertEquals(movie, movie);
+    }
+
+    @Test
+    public void shouldReturnFalseOnNullComparison() {
+        Movie movie = new Movie("Bahubali", "S S Rajamauli", "9");
+        assertNotEquals(movie, null);
+    }
+
+    @Test
+    public void shouldReturnFalseOnComparisonWithOtherObject() {
+        Movie movie = new Movie("Bahubali", "S S Rajamauli", "9");
+        assertNotEquals(movie, new Object());
+    }
+
+    @Test
+    public void hashShouldBeSameForEqualMovies() {
+        Movie movie1 = new Movie("Bahubali", "S S Rajamauli", "9");
+        Movie movie2 = new Movie("Bahubali", "S. S. Rajamauli", "9");
+        assertEquals(movie1.hashCode(), movie2.hashCode());
+    }
 }

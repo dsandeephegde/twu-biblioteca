@@ -17,4 +17,18 @@ public class Movie {
     public String toString() {
         return String.format("%-40s%-40s%-40s", name, director, rating);
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null) return false;
+        if(getClass() != that.getClass()) return false;
+        Movie movie = (Movie) that;
+        return name.equals(movie.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }

@@ -35,6 +35,17 @@ public class Library {
         view.output(listBookString);
     }
 
+    public Boolean checkOutMovie(String movieName) {
+        Movie searchableMovie = new Movie(movieName, null, null);
+        for(Movie movie : movies) {
+            if(movie.equals(searchableMovie)) {
+                movies.remove(movie);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Boolean checkoutBook(String bookName) {
         Book searchableBook = new Book(bookName, null, 0);
         for(Book book: availableBooks) {
