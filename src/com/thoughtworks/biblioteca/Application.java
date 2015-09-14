@@ -24,7 +24,6 @@ public class Application {
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         Library library = new Library(books, view);
 
-
         ArrayList<String> menuItems = new ArrayList<String>();
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
@@ -32,12 +31,7 @@ public class Application {
         menuItems.add("4. Return");
         Menu menu = new Menu(menuItems, library, view);
 
-        menu.display();
-
-        while(true) {
-            MenuItem menuItem = menu.selectMenuItem(view.input());
-            menuItem.performOperation();
-            menu.display();
-        }
+        Controller controller = new Controller(view, menu);
+        controller.run();
     }
 }

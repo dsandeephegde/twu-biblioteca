@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Menu {
 
-    private ArrayList<String> menuList = new ArrayList<String>();
+    private ArrayList<String> menuList;
     private HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
     private Library library;
     private View view;
@@ -15,6 +15,7 @@ public class Menu {
         this.menuList = menuList;
         this.library = library;
         this.view = view;
+        configureHash();
     }
 
     public void display() {
@@ -33,7 +34,6 @@ public class Menu {
     }
 
     public MenuItem selectMenuItem(String option) {
-        configureHash();
         MenuItem menuItem = menuItems.get(option);
         if(menuItem == null)
             return menuItems.get("invalid");
