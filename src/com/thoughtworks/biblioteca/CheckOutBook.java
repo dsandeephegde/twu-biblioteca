@@ -13,6 +13,7 @@ public class CheckOutBook implements MenuItem {
 
     @Override
     public void performOperation() {
+        view.output("Enter the Book Name\n");
         String bookName = view.input();
         if(library.checkoutBook(bookName))
             view.output("Thank you! Enjoy the book\n");

@@ -45,4 +45,15 @@ public class CheckOutBookTest {
 
         verify(view).output("That book is not available\n");
     }
+
+    @Test
+    public void shouldDisplayEnterBookNameInitially() {
+        Library library = mock(Library.class);
+        View view = mock(View.class);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view);
+
+        checkOutBook.performOperation();
+
+        verify(view).output("Enter the Book Name\n");
+    }
 }

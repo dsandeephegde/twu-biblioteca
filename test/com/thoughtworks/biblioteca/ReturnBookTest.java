@@ -46,4 +46,15 @@ public class ReturnBookTest {
 
         verify(view).output("That is not a valid book to return\n");
     }
+
+    @Test
+    public void shouldDisplayEnterBookNameInitially() {
+        Library library = mock(Library.class);
+        View view = mock(View.class);
+        ReturnBook returnBook = new ReturnBook(library, view);
+
+        returnBook.performOperation();
+
+        verify(view).output("Enter the Book Name\n");
+    }
 }

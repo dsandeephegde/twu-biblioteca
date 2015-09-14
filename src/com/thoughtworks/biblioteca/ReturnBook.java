@@ -13,6 +13,7 @@ public class ReturnBook implements MenuItem {
 
     @Override
     public void performOperation() {
+        view.output("Enter the Book Name\n");
         String bookName = view.input();
         if(library.returnBook(bookName))
             view.output("Thank you for returning the book\n");
