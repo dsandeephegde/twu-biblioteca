@@ -15,18 +15,13 @@ public class Library {
         this.view = view;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Book Name\t").append("Author\t").append("Year Published\n");
-        for(Book book : availableBooks) {
-            stringBuilder.append(book.toString()).append("\n");
-        }
-        return stringBuilder.toString();
-    }
-
     public void displayBookList() {
-        view.output(toString());
+        String listBookString = "";
+        listBookString += String.format("%-40s%-40s%-40s", "Book Name", "Author", "Year Published") + "\n";
+        for(Book book : availableBooks) {
+            listBookString += book.toString() + "\n";
+        }
+        view.output(listBookString);
     }
 
     public Boolean checkoutBook(String bookName) {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 public class LibraryTest {
@@ -18,7 +19,9 @@ public class LibraryTest {
         View view = mock(View.class);
         Library library = new Library(books, view);
 
-        assertEquals("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", library.toString());
+        library.displayBookList();
+
+        verify(view).output(String.format("%-40s%-40s%-40s\n%-40s%-40s%-40d\n%-40s%-40s%-40d\n", "Book Name", "Author", "Year Published", "Twilight", "Stephenie Meyer", 2005, "Harry Potter", "J.K. Rowling", 2002));
     }
 
     @Test
@@ -29,20 +32,9 @@ public class LibraryTest {
         View view = mock(View.class);
         Library library = new Library(books, view);
 
-        assertNotEquals("Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n", library.toString());
-    }
-
-    @Test
-    public void displayBookListShouldCallOutput() {
-        ArrayList<Book> books = new ArrayList<Book>();
-        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
-        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        View view = mock(View.class);
-        Library library = new Library(books, view);
-
         library.displayBookList();
 
-        verify(view).output("Book Name\t" + "Author\t" + "Year Published\n" + "Twilight\t" + "Stephenie Meyer\t" + 2005 + "\n" + "Harry Potter\t" + "J.K. Rowling\t" + 2002 + "\n");
+        verify(view, never()).output(String.format("%-40s%-40s%-40d%-40s%-40s%-40d", "Twilight", "Stephenie Meyer", 2005, "Harry Potter", "J.K. Rowling", 2002));
     }
 
     @Test

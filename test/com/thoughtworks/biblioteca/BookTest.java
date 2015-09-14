@@ -9,13 +9,7 @@ public class BookTest {
     @Test
     public void shouldReturnCorrectToString() {
         Book book = new Book("Twilight", "Stephenie Meyer", 2005);
-        assertEquals("Twilight\t" + "Stephenie Meyer\t" + 2005, book.toString());
-    }
-
-    @Test
-    public void shouldReturnTrueForEqualNames() {
-        Book book = new Book("Twilight", "Stephenie Meyer", 2005);
-        assertEquals(true, book.hasName("Twilight"));
+        assertEquals(String.format("%-40s%-40s%-40d","Twilight", "Stephenie Meyer", 2005), book.toString());
     }
 
     @Test

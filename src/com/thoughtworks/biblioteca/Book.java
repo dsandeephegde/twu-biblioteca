@@ -15,11 +15,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return name + "\t" + author + "\t" + yearPublished;
-    }
-
-    public boolean hasName(String bookName) {
-        return name.equals(bookName);
+        return String.format("%-40s%-40s%-40d", name, author, yearPublished);
     }
 
     @Override
