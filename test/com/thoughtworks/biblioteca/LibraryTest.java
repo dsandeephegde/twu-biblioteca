@@ -143,4 +143,17 @@ public class LibraryTest {
 
         assertEquals(true, library.checkOutMovie("Bahubali"));
     }
+
+    @Test
+    public void shouldNotCheckOutIfMovieNotAvailable() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        View view = mock(View.class);
+        Library library = new Library(books, movies, view);
+
+        assertEquals(false, library.checkOutMovie("Bahubali 2"));
+    }
 }
