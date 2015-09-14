@@ -7,12 +7,23 @@ public class Library {
 
     private ArrayList<Book> availableBooks;
     private ArrayList<Book> checkedOutBooks;
+    private ArrayList<Movie> movies;
     private View view;
 
-    public Library(ArrayList<Book> availableBooks, View view) {
-        this.availableBooks = availableBooks;
+    public Library(ArrayList<Book> books, ArrayList<Movie> movies, View view) {
+        this.availableBooks = books;
+        this.movies = movies;
         this.checkedOutBooks = new ArrayList<Book>();
         this.view = view;
+    }
+
+    public void displayMovieList() {
+        String listMovieString = "";
+        listMovieString += String.format("%-40s%-40s%-40s", "Movie Name", "Director", "Rating") + "\n";
+        for(Movie movie : movies) {
+            listMovieString += movie.toString() + "\n";
+        }
+        view.output(listMovieString);
     }
 
     public void displayBookList() {
