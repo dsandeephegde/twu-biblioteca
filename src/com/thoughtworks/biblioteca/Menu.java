@@ -30,6 +30,7 @@ public class Menu {
         menuItems.put("2", new Quit());
         menuItems.put("3", new CheckOutBook(library, view));
         menuItems.put("4", new ReturnBook(library, view));
+        menuItems.put("5", new ListMovies(library));
         menuItems.put("invalid", new InvalidMenuItem(view));
     }
 

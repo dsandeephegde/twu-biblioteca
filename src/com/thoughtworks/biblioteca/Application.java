@@ -29,8 +29,9 @@ public class Application {
         ArrayList<String> menuItems = new ArrayList<String>();
         menuItems.add("1. List Books");
         menuItems.add("2. Exit");
-        menuItems.add("3. CheckOut");
-        menuItems.add("4. Return");
+        menuItems.add("3. CheckOut Book");
+        menuItems.add("4. Return Book");
+        menuItems.add("5. List Movie");
         Menu menu = new Menu(menuItems, library, view);
 
         Controller controller = new Controller(view, menu);
