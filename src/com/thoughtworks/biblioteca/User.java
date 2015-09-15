@@ -4,8 +4,12 @@ public class User {
 
     private String libraryNumber;
     private String password;
-    public enum type {CUSTOMER, LIBRARIAN, INVALID};
+    public enum type {CUSTOMER, LIBRARIAN, INVALID}
     private type userType;
+
+    public type getUserType() {
+        return userType;
+    }
 
     public User(String libraryNumber, String password, type userType) {
         this.libraryNumber = libraryNumber;

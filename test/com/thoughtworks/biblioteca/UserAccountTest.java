@@ -15,4 +15,12 @@ public class UserAccountTest {
         UserAccount userAccount = new UserAccount(users);
         assertEquals(new User("111-1111", "abc123", User.type.CUSTOMER), userAccount.authenticateUser("111-1111", "abc123"));
     }
+
+    @Test
+    public void shouldReturnInvalidUserOnUnsuccessfulAuthentication() {
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN));
+        UserAccount userAccount = new UserAccount(users);
+        assertEquals(User.type.INVALID, userAccount.authenticateUser("111-1111", "abc").getUserType());
+    }
 }
