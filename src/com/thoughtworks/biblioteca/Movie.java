@@ -4,18 +4,20 @@ package com.thoughtworks.biblioteca;
 public class Movie {
 
     private String name;
+    private int year;
     private String director;
     private String rating;
 
-    public Movie(String name, String director, String rating) {
+    public Movie(String name, int year, String director, String rating) {
         this.name = name;
+        this.year = year;
         this.director = director;
         this.rating = rating;
     }
 
     @Override
     public String toString() {
-        return String.format("%-40s%-40s%-40s", name, director, rating);
+        return String.format("%-40s%-40d%-40s%-40s", name, year, director, rating);
     }
 
     @Override

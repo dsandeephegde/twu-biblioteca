@@ -23,7 +23,7 @@ public class Application {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         Library library = new Library(books, movies, view);
 
         ArrayList<String> menuItems = new ArrayList<String>();

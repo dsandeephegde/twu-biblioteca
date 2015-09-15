@@ -17,7 +17,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
 
@@ -32,7 +32,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
 
@@ -47,7 +47,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         assertEquals(true, library.checkoutBook("Harry Potter"));
@@ -59,7 +59,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         assertEquals(false, library.checkoutBook("Harry Potter 3"));
@@ -71,7 +71,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         library.checkoutBook("Harry Potter");
@@ -84,7 +84,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         library.checkoutBook("Harry Potter");
@@ -97,7 +97,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         library.checkoutBook("Harry Potter");
@@ -110,7 +110,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
         assertEquals(false, library.returnBook("Harry Potter"));
@@ -122,13 +122,13 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
 
         library.displayMovieList();
 
-        verify(view).output(String.format("%-40s%-40s%-40s\n%-40s%-40s%-40s\n", "Movie Name", "Director", "Rating", "Bahubali", "S S Rajamouli", "9"));
+        verify(view).output(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40d%-40s%-40s\n", "Movie Name", "Year", "Director", "Rating", "Bahubali", 2015, "S S Rajamouli", "9"));
     }
 
     @Test
@@ -137,7 +137,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
 
@@ -150,7 +150,7 @@ public class LibraryTest {
         books.add(new Book("Twilight", "Stephenie Meyer", 2005));
         books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
         ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", "S S Rajamouli", "9"));
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         Library library = new Library(books, movies, view);
 

@@ -19,7 +19,7 @@ public class Library {
 
     public void displayMovieList() {
         String listMovieString = "";
-        listMovieString += String.format("%-40s%-40s%-40s", "Movie Name", "Director", "Rating") + "\n";
+        listMovieString += String.format("%-40s%-40s%-40s%-40s", "Movie Name", "Year", "Director", "Rating") + "\n";
         for(Movie movie : movies) {
             listMovieString += movie.toString() + "\n";
         }
@@ -36,7 +36,7 @@ public class Library {
     }
 
     public Boolean checkOutMovie(String movieName) {
-        Movie searchableMovie = new Movie(movieName, null, null);
+        Movie searchableMovie = new Movie(movieName, 0, null, null);
         for(Movie movie : movies) {
             if(movie.equals(searchableMovie)) {
                 movies.remove(movie);
