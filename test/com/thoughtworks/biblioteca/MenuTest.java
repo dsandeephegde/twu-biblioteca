@@ -6,6 +6,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -20,14 +21,15 @@ public class MenuTest {
 
     @Test
     public void shouldDisplayMenuList() {
-        ArrayList<String> options = new ArrayList<String>();
-        options.add("1. List Books");
-        options.add("2. Quit");
+        ArrayList<String> menus = new ArrayList<String>();
+        menus.add("1. List Books");
+        menus.add("2. Quit");
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
         Library library = mock(Library.class);
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(options, library, view, userAccount, session);
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
         menu.display();
 
@@ -42,7 +44,15 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
         menu.selectMenuItem("1").performOperation();
 
@@ -58,11 +68,19 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
         exit.expectSystemExitWithStatus(0);
 
-        menu.selectMenuItem("2").performOperation();
+        menu.selectMenuItem("9").performOperation();
     }
 
     @Test
@@ -74,7 +92,15 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
         menu.selectMenuItem("10").performOperation();
 
@@ -90,9 +116,17 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
-        menu.selectMenuItem("3").performOperation();
+        menu.selectMenuItem("2").performOperation();
 
         verify(library).checkoutBook(view.input());
     }
@@ -106,7 +140,15 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
         menu.selectMenuItem("invalid").performOperation();
 
@@ -122,9 +164,17 @@ public class MenuTest {
         View view = mock(View.class);
         UserAccount userAccount = mock(UserAccount.class);
         Session session = mock(Session.class);
-        Menu menu = new Menu(menus, library, view, userAccount, session);
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view));
+        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("5", new CheckOutMovie(library, view));
+        menuItemsHashMap.put("9", new Quit());
+        menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
+        Menu menu = new Menu(menus, menuItemsHashMap, view);
 
-        menu.selectMenuItem("4").performOperation();
+        menu.selectMenuItem("3").performOperation();
 
         verify(library).returnBook(view.input());
     }

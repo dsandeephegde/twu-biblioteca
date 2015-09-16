@@ -5,7 +5,7 @@ public class User {
 
     private String libraryNumber;
     private String password;
-    public enum type {CUSTOMER, LIBRARIAN, INVALID}
+    public enum type {CUSTOMER, LIBRARIAN, GUEST}
     private type userType;
 
     public type getUserType() {

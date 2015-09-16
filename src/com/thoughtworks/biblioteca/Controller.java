@@ -3,17 +3,19 @@ package com.thoughtworks.biblioteca;
 
 public class Controller {
     private View view;
-    private Menu menu;
+    private MenuFactory menuFactory;
     private Session session;
 
-    public Controller(View view, Menu menu, Session session) {
+    public Controller(View view, MenuFactory menuFactory, Session session) {
         this.view = view;
-        this.menu = menu;
+        this.menuFactory = menuFactory;
         this.session = session;
     }
 
     public void run() {
+        Menu menu;
         while(true) {
+            menu = menuFactory.configureMenu(session.getCurrentUser());
             menu.display();
             MenuItem menuItem = menu.selectMenuItem(view.input());
             menuItem.performOperation();

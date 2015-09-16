@@ -16,7 +16,7 @@ public class SessionTest {
     @Test
     public void shouldSetCorrectSessionUser() {
         User user = new User("111-1111", "abc", User.type.CUSTOMER);
-        Session session = new Session(new User("", "", User.type.INVALID));
+        Session session = new Session(new User("", "", User.type.GUEST));
         session.setCurrentUser(user);
         assertEquals(user, session.getCurrentUser());
     }

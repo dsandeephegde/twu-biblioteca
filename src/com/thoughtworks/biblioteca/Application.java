@@ -26,22 +26,15 @@ public class Application {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         Library library = new Library(books, movies, view);
 
-        ArrayList<String> menuItems = new ArrayList<String>();
-        menuItems.add("1. List Books");
-        menuItems.add("2. Exit");
-        menuItems.add("3. CheckOut Book");
-        menuItems.add("4. Return Book");
-        menuItems.add("5. List Movie");
-        menuItems.add("6. CheckOut Movie");
-        menuItems.add("7. Login");
         ArrayList<User> users = new ArrayList<User>();
         users.add(new User("111-1111", "abc123", User.type.CUSTOMER));
         users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN));
         UserAccount userAccount = new UserAccount(users);
-        Session session = new Session(new User("111-0000", "abc", User.type.INVALID));
-        Menu menu = new Menu(menuItems, library, view, userAccount, session);
 
-        Controller controller = new Controller(view, menu, session);
+        Session session = new Session(new User("111-0000", "abc", User.type.GUEST));
+        MenuFactory menuFactory = new MenuFactory(library, view, userAccount, session);
+        Controller controller = new Controller(view, menuFactory, session);
+
         controller.run();
     }
 }

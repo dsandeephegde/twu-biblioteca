@@ -21,6 +21,6 @@ public class UserAccountTest {
         ArrayList<User> users = new ArrayList<User>();
         users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN));
         UserAccount userAccount = new UserAccount(users);
-        assertEquals(User.type.INVALID, userAccount.authenticateUser("111-1111", "abc").getUserType());
+        assertEquals(User.type.GUEST, userAccount.authenticateUser("111-1111", "abc").getUserType());
     }
 }

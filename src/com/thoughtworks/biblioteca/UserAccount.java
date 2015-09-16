@@ -12,7 +12,7 @@ public class UserAccount {
     }
 
     public User authenticateUser(String userName, String password) {
-        User userToAuthenticate = new User(userName, password, User.type.INVALID);
+        User userToAuthenticate = new User(userName, password, User.type.GUEST);
         for(User user : users) {
             if(user.authenticate(userToAuthenticate))
                 return user;
