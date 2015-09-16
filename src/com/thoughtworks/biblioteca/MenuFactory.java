@@ -61,7 +61,7 @@ public class MenuFactory {
         menuItemsHashMap.put("4", new ListMovies(library));
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
 
-
+        menuItemsHashMap.put("7", new Logout(session));
         menuItemsHashMap.put("8", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
         return new Menu(menuItems, menuItemsHashMap, view);
@@ -86,7 +86,7 @@ public class MenuFactory {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
 
 
-
+        menuItemsHashMap.put("8", new Logout(session));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
         return new Menu(menuItems, menuItemsHashMap, view);
