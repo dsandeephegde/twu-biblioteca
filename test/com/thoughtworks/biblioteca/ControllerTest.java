@@ -15,7 +15,8 @@ public class ControllerTest {
     public void shouldExitFromWhile() {
         View view = mock(View.class);
         Menu menu = mock(Menu.class);
-        Controller controller = new Controller(view, menu);
+        Session session = mock(Session.class);
+        Controller controller = new Controller(view, menu, session);
         when(menu.selectMenuItem(view.input())).thenReturn(new Quit());
 
         exit.expectSystemExit();

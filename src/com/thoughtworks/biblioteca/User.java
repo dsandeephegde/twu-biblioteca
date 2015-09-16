@@ -1,3 +1,4 @@
+//user is the specific person who has library number to access the library books
 package com.thoughtworks.biblioteca;
 
 public class User {

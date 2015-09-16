@@ -8,7 +8,11 @@ public class Session {
         this.user = user;
     }
 
-    public User getUser() {
+    public User getCurrentUser() {
         return user;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.user = currentUser;
     }
 }

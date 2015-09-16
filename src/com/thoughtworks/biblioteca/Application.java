@@ -33,9 +33,15 @@ public class Application {
         menuItems.add("4. Return Book");
         menuItems.add("5. List Movie");
         menuItems.add("6. CheckOut Movie");
-        Menu menu = new Menu(menuItems, library, view);
+        menuItems.add("7. Login");
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(new User("111-1111", "abc123", User.type.CUSTOMER));
+        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN));
+        UserAccount userAccount = new UserAccount(users);
+        Session session = new Session(new User("111-0000", "abc", User.type.INVALID));
+        Menu menu = new Menu(menuItems, library, view, userAccount, session);
 
-        Controller controller = new Controller(view, menu);
+        Controller controller = new Controller(view, menu, session);
         controller.run();
     }
 }

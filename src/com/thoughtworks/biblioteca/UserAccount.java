@@ -1,4 +1,4 @@
-//
+//user Account to store all users and authenticate
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;

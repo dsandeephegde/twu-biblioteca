@@ -10,11 +10,15 @@ public class Menu {
     private HashMap<String, MenuItem> menuItems = new HashMap<String, MenuItem>();
     private Library library;
     private View view;
+    private UserAccount userAccount;
+    private Session session;
 
-    public Menu(ArrayList<String> menuList, Library library, View view) {
+    public Menu(ArrayList<String> menuList, Library library, View view, UserAccount userAccount, Session session) {
         this.menuList = menuList;
         this.library = library;
         this.view = view;
+        this.userAccount = userAccount;
+        this.session = session;
         configureHash();
     }
 
@@ -32,6 +36,7 @@ public class Menu {
         menuItems.put("4", new ReturnBook(library, view));
         menuItems.put("5", new ListMovies(library));
         menuItems.put("6", new CheckOutMovie(library, view));
+        menuItems.put("7", new Login(view, userAccount, session));
         menuItems.put("invalid", new InvalidMenuItem(view));
     }
 

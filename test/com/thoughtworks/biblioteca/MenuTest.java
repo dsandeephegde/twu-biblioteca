@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -26,7 +25,9 @@ public class MenuTest {
         options.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(options, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(options, library, view, userAccount, session);
 
         menu.display();
 
@@ -39,7 +40,9 @@ public class MenuTest {
         menus.add("1. List Books");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         menu.selectMenuItem("1").performOperation();
 
@@ -53,7 +56,9 @@ public class MenuTest {
         menus.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         exit.expectSystemExitWithStatus(0);
 
@@ -67,7 +72,9 @@ public class MenuTest {
         menus.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         menu.selectMenuItem("10").performOperation();
 
@@ -81,7 +88,9 @@ public class MenuTest {
         menus.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         menu.selectMenuItem("3").performOperation();
 
@@ -95,7 +104,9 @@ public class MenuTest {
         menus.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         menu.selectMenuItem("invalid").performOperation();
 
@@ -109,7 +120,9 @@ public class MenuTest {
         menus.add("2. Quit");
         Library library = mock(Library.class);
         View view = mock(View.class);
-        Menu menu = new Menu(menus, library, view);
+        UserAccount userAccount = mock(UserAccount.class);
+        Session session = mock(Session.class);
+        Menu menu = new Menu(menus, library, view, userAccount, session);
 
         menu.selectMenuItem("4").performOperation();
 
