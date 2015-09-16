@@ -7,15 +7,27 @@ public class User {
     private String password;
     public enum type {CUSTOMER, LIBRARIAN, GUEST}
     private type userType;
+    private String name;
+    private String emailAddress;
+    private String phoneNumber;
 
     public type getUserType() {
         return userType;
     }
 
-    public User(String libraryNumber, String password, type userType) {
+    public User(String libraryNumber, String password, type userType, String name, String emailAddress, String phoneNumber) {
         this.libraryNumber = libraryNumber;
         this.password = password;
         this.userType = userType;
+        this.name = name;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void displayDetails(View view) {
+        String userString = "";
+        userString += String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", libraryNumber, name, emailAddress, phoneNumber);
+        view.output(userString);
     }
 
     @Override

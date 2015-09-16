@@ -27,11 +27,11 @@ public class Application {
         Library library = new Library(books, movies, view);
 
         ArrayList<User> users = new ArrayList<User>();
-        users.add(new User("111-1111", "abc123", User.type.CUSTOMER));
-        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN));
+        users.add(new User("111-1111", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999"));
+        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN, "librarian1", "librarian1@gmail.com", "9999999999"));
         UserAccount userAccount = new UserAccount(users);
 
-        Session session = new Session(new User("111-0000", "abc", User.type.GUEST));
+        Session session = new Session(new User("111-0000", "abc", User.type.GUEST, "guser1", "guser1@gmail.com", "9999999999"));
         MenuFactory menuFactory = new MenuFactory(library, view, userAccount, session);
         Controller controller = new Controller(view, menuFactory, session);
 
