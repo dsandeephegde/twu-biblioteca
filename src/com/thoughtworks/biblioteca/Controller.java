@@ -16,8 +16,9 @@ public class Controller {
         Menu menu;
         while(true) {
             menu = menuFactory.configureMenu(session.getCurrentUser());
-            menu.display();
-            MenuItem menuItem = menu.selectMenuItem(view.input());
+            view.output(menu.menuList());
+            String choice = view.input();
+            MenuItem menuItem = menu.selectMenuItem(choice);
             menuItem.performOperation();
         }
     }

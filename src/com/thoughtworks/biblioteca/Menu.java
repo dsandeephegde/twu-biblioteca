@@ -8,19 +8,17 @@ public class Menu {
 
     private ArrayList<String> menuList;
     private HashMap<String, MenuItem> menuItems;
-    private View view;
 
-    public Menu(ArrayList<String> menuList, HashMap<String, MenuItem> menuItems, View view) {
+    public Menu(ArrayList<String> menuList, HashMap<String, MenuItem> menuItems) {
         this.menuList = menuList;
         this.menuItems = menuItems;
-        this.view = view;
     }
 
-    public void display() {
+    public String menuList() {
         String menuString = "";
         for (String menuItem : menuList)
             menuString += menuItem + "\n";
-        view.output(menuString);
+        return menuString;
     }
 
     public MenuItem selectMenuItem(String option) {

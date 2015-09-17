@@ -41,7 +41,7 @@ public class MenuFactory {
         menuItemsHashMap.put("4", new Login(view, userAccount, session));
         menuItemsHashMap.put("5", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        return new Menu(menuItems, menuItemsHashMap, view);
+        return new Menu(menuItems, menuItemsHashMap);
     }
 
     private Menu customerMenu() {
@@ -64,7 +64,7 @@ public class MenuFactory {
         menuItemsHashMap.put("7", new Logout(session));
         menuItemsHashMap.put("8", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        return new Menu(menuItems, menuItemsHashMap, view);
+        return new Menu(menuItems, menuItemsHashMap);
     }
 
     private Menu librarianMenu() {
@@ -89,6 +89,6 @@ public class MenuFactory {
         menuItemsHashMap.put("8", new Logout(session));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        return new Menu(menuItems, menuItemsHashMap, view);
+        return new Menu(menuItems, menuItemsHashMap);
     }
 }

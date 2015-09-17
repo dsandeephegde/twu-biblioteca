@@ -26,15 +26,10 @@ public class MenuTest {
         menus.add("1. List Books");
         menus.add("2. Quit");
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
-        Library library = mock(Library.class);
         View view = mock(View.class);
-        UserAccount userAccount = mock(UserAccount.class);
-        Session session = mock(Session.class);
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
-        menu.display();
-
-        verify(view).output("1. List Books\n2. Quit\n");
+        assertEquals("1. List Books\n2. Quit\n", menu.menuList());
     }
 
     @Test
@@ -53,7 +48,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         menu.selectMenuItem("1").performOperation();
 
@@ -77,7 +72,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         exit.expectSystemExitWithStatus(0);
 
@@ -101,7 +96,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         menu.selectMenuItem("10").performOperation();
 
@@ -127,7 +122,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         menu.selectMenuItem("2").performOperation();
 
@@ -151,7 +146,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         menu.selectMenuItem("invalid").performOperation();
 
@@ -177,7 +172,7 @@ public class MenuTest {
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("9", new Quit());
         menuItemsHashMap.put("invalid", new InvalidMenuItem(view));
-        Menu menu = new Menu(menus, menuItemsHashMap, view);
+        Menu menu = new Menu(menus, menuItemsHashMap);
 
         menu.selectMenuItem("3").performOperation();
 
