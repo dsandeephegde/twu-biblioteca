@@ -1,3 +1,4 @@
+//Lists the Movies Available in the Library
 package com.thoughtworks.biblioteca;
 
 public class ListMovies implements MenuItem {

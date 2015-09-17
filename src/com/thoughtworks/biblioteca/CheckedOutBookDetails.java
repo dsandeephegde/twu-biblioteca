@@ -1,3 +1,4 @@
+//MenuItem which displays the checked out book details
 package com.thoughtworks.biblioteca;
 
 public class CheckedOutBookDetails implements MenuItem {

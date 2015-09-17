@@ -1,3 +1,4 @@
+//User Logout is performed here
 package com.thoughtworks.biblioteca;
 
 public class Logout implements MenuItem {

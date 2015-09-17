@@ -1,3 +1,4 @@
+//Menu Item which does checkout movie operation
 package com.thoughtworks.biblioteca;
 
 public class CheckOutMovie implements MenuItem {

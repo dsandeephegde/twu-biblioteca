@@ -1,3 +1,4 @@
+//Login of a user is performed here
 package com.thoughtworks.biblioteca;
 
 public class Login implements MenuItem {

@@ -1,3 +1,4 @@
+//Configures the menu according to type of user
 package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;

@@ -1,3 +1,4 @@
+//Stores the Session information of the Application. ie. currently logged in user
 package com.thoughtworks.biblioteca;
 
 public class Session {
