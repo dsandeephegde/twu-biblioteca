@@ -14,7 +14,9 @@ public class Login implements MenuItem {
 
     @Override
     public void performOperation() {
+        view.output("Enter Library Number\n");
         String libraryNumber = view.input();
+        view.output("Enter Password\n");
         String password = view.input();
         session.setCurrentUser(userAccount.authenticateUser(libraryNumber, password));
     }
