@@ -26,7 +26,7 @@ public class User {
 
     public String userDetails() {
         String userString = "";
-        userString += String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", libraryNumber, name, emailAddress, phoneNumber);
+        userString += String.format("%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n", "library Number", libraryNumber, "Name", name, "Email Address", emailAddress, "Phone Number", phoneNumber);
         return userString;
     }
 
