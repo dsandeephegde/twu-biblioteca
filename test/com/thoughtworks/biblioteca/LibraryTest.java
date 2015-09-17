@@ -194,4 +194,18 @@ public class LibraryTest {
 
         assertEquals(false, library.checkOutMovie("Bahubali 2"));
     }
+
+    @Test
+    public void shouldReturnCheckedOutBookDetails() {
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
+        View view = mock(View.class);
+        Library library = new Library(books, movies, view);
+        User user = new User("111-2222", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999");
+        library.checkoutBook("Twilight", user);
+        assertEquals(String.format("\nBook: \n%-40s%-40s%-40d\nCustomer: \n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n\n", "Twilight", "Stephenie Meyer", 2005, "library Number", "111-2222", "Name", "user1", "Email Address", "user1@gmail.com", "Phone Number", "9999999999"), library.checkedOutBookDetails());
+    }
 }

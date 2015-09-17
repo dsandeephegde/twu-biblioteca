@@ -3,6 +3,8 @@ package com.thoughtworks.biblioteca;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Library {
 
@@ -68,5 +70,15 @@ public class Library {
                 return true;
             }
         return false;
+    }
+
+    public String checkedOutBookDetails() {
+        String checkedOutBookDetails = "";
+        Set set = checkOutBooksHash.entrySet();
+        for (Object aSet : set) {
+            Map.Entry entry = (Map.Entry) aSet;
+            checkedOutBookDetails += "\nBook: \n" + entry.getKey().toString() + "\nCustomer: \n" + ((User)entry.getValue()).userDetails() + "\n";
+        }
+        return checkedOutBookDetails;
     }
 }
