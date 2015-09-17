@@ -13,28 +13,43 @@ public class Application {
     }
 
     public void start() {
-        PrintStream printStream = new PrintStream(System.out);
-        Scanner scanner = new Scanner(System.in);
-        View view = new View(scanner, printStream);
+        View view = getView();
+        displayWelcomeMessage(view);
+        Library library = getLibrary();
+        UserAccount userAccount = getUserAccount();
+        Controller controller = getController(view, library, userAccount);
+        controller.run();
+    }
 
+    private void displayWelcomeMessage(View view) {
         view.output("Welcome to Biblioteca\n");
+    }
 
-        ArrayList<Book> books = new ArrayList<Book>();
-        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
-        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        ArrayList<Movie> movies = new ArrayList<Movie>();
-        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
-        Library library = new Library(books, movies, view);
-
-        ArrayList<User> users = new ArrayList<User>();
-        users.add(new User("111-1111", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999"));
-        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN, "librarian1", "librarian1@gmail.com", "9999999999"));
-        UserAccount userAccount = new UserAccount(users);
-
+    private Controller getController(View view, Library library, UserAccount userAccount) {
         Session session = new Session(new User("111-0000", "abc", User.type.GUEST, "guser1", "guser1@gmail.com", "9999999999"));
         MenuFactory menuFactory = new MenuFactory(library, view, userAccount, session);
-        Controller controller = new Controller(view, menuFactory, session);
+        return new Controller(view, menuFactory, session);
+    }
 
-        controller.run();
+    private UserAccount getUserAccount() {
+        ArrayList<User> users = new ArrayList<>();
+        users.add(new User("111-1111", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999"));
+        users.add(new User("111-2222", "xyz123", User.type.LIBRARIAN, "librarian1", "librarian1@gmail.com", "9999999999"));
+        return new UserAccount(users);
+    }
+
+    private Library getLibrary() {
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
+        return new Library(books, movies);
+    }
+
+    private View getView() {
+        PrintStream printStream = new PrintStream(System.out);
+        Scanner scanner = new Scanner(System.in);
+        return new View(scanner, printStream);
     }
 }

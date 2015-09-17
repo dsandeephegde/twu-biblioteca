@@ -11,30 +11,28 @@ public class Library {
     private ArrayList<Book> availableBooks;
     private HashMap<Book, User> checkOutBooksHash = new HashMap<>();
     private ArrayList<Movie> movies;
-    private View view;
 
-    public Library(ArrayList<Book> books, ArrayList<Movie> movies, View view) {
+    public Library(ArrayList<Book> books, ArrayList<Movie> movies) {
         this.availableBooks = books;
         this.movies = movies;
-        this.view = view;
     }
 
-    public void displayMovieList() {
+    public String movieList() {
         String listMovieString = "";
         listMovieString += String.format("%-40s%-40s%-40s%-40s", "Movie Name", "Year", "Director", "Rating") + "\n";
         for (Movie movie : movies) {
             listMovieString += movie.toString() + "\n";
         }
-        view.output(listMovieString);
+        return listMovieString;
     }
 
-    public void displayBookList() {
+    public String bookList() {
         String listBookString = "";
         listBookString += String.format("%-40s%-40s%-40s", "Book Name", "Author", "Year Published") + "\n";
         for (Book book : availableBooks) {
             listBookString += book.toString() + "\n";
         }
-        view.output(listBookString);
+        return listBookString;
     }
 
     public Boolean checkOutMovie(String movieName) {

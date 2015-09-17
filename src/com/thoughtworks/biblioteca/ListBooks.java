@@ -4,13 +4,16 @@ package com.thoughtworks.biblioteca;
 public class ListBooks implements MenuItem {
 
     private Library library;
+    private View view;
 
-    public ListBooks(Library library) {
+    public ListBooks(Library library, View view) {
         this.library = library;
+        this.view = view;
     }
 
     @Override
     public void performOperation() {
-        library.displayBookList();
+        String bookList = library.bookList();
+        view.output(bookList);
     }
 }

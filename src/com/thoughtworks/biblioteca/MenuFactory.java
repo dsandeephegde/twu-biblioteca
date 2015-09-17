@@ -35,8 +35,8 @@ public class MenuFactory {
         menuItems.add("4. Login");
         menuItems.add("5. Exit");
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
-        menuItemsHashMap.put("1", new ListBooks(library));
-        menuItemsHashMap.put("2", new ListMovies(library));
+        menuItemsHashMap.put("1", new ListBooks(library, view));
+        menuItemsHashMap.put("2", new ListMovies(library, view));
         menuItemsHashMap.put("3", new CheckOutMovie(library, view));
         menuItemsHashMap.put("4", new Login(view, userAccount, session));
         menuItemsHashMap.put("5", new Quit());
@@ -55,10 +55,10 @@ public class MenuFactory {
         menuItems.add("7. Logout");
         menuItems.add("8. Exit");
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
-        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("1", new ListBooks(library, view));
         menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
         menuItemsHashMap.put("3", new ReturnBook(library, view, session));
-        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("4", new ListMovies(library, view));
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("6", new UserDetails(session, view));
         menuItemsHashMap.put("7", new Logout(session));
@@ -79,10 +79,10 @@ public class MenuFactory {
         menuItems.add("8. Logout");
         menuItems.add("9. Exit");
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
-        menuItemsHashMap.put("1", new ListBooks(library));
+        menuItemsHashMap.put("1", new ListBooks(library, view));
         menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
         menuItemsHashMap.put("3", new ReturnBook(library, view, session));
-        menuItemsHashMap.put("4", new ListMovies(library));
+        menuItemsHashMap.put("4", new ListMovies(library, view));
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("6", new UserDetails(session, view));
         menuItemsHashMap.put("7", new CheckedOutBookDetails(library, view));

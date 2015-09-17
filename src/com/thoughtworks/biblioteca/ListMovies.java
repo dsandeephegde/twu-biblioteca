@@ -3,13 +3,16 @@ package com.thoughtworks.biblioteca;
 public class ListMovies implements MenuItem {
 
     private Library library;
+    private View view;
 
-    public ListMovies(Library library) {
+    public ListMovies(Library library, View view) {
         this.library = library;
+        this.view = view;
     }
 
     @Override
     public void performOperation() {
-        library.displayMovieList();
+        String movieList = library.movieList();
+        view.output(movieList);
     }
 }

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 public class LibraryTest {
@@ -19,26 +18,9 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
 
-        library.displayBookList();
-
-        verify(view).output(String.format("%-40s%-40s%-40s\n%-40s%-40s%-40d\n%-40s%-40s%-40d\n", "Book Name", "Author", "Year Published", "Twilight", "Stephenie Meyer", 2005, "Harry Potter", "J.K. Rowling", 2002));
-    }
-
-    @Test
-    public void shouldNotReturnWrongFormatDisplayBookList() {
-        ArrayList<Book> books = new ArrayList<>();
-        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
-        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        ArrayList<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
-        View view = mock(View.class);
-        Library library = new Library(books, movies, view);
-
-        library.displayBookList();
-
-        verify(view, never()).output(String.format("%-40s%-40s%-40d%-40s%-40s%-40d", "Twilight", "Stephenie Meyer", 2005, "Harry Potter", "J.K. Rowling", 2002));
+        assertEquals(String.format("%-40s%-40s%-40s\n%-40s%-40s%-40d\n%-40s%-40s%-40d\n", "Book Name", "Author", "Year Published", "Twilight", "Stephenie Meyer", 2005, "Harry Potter", "J.K. Rowling", 2002), library.bookList());
     }
 
     @Test
@@ -50,7 +32,7 @@ public class LibraryTest {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         User user = mock(User.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         assertEquals(true, library.checkoutBook("Harry Potter", user));
     }
 
@@ -63,7 +45,7 @@ public class LibraryTest {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         User user = mock(User.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         assertEquals(false, library.checkoutBook("Harry Potter 3", user));
     }
 
@@ -76,7 +58,7 @@ public class LibraryTest {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         User user = mock(User.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         library.checkoutBook("Harry Potter", user);
         assertEquals(false, library.checkoutBook("Harry Potter", user));
     }
@@ -90,7 +72,7 @@ public class LibraryTest {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         User user = mock(User.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         library.checkoutBook("Harry Potter", user);
         assertEquals(true, library.returnBook("Harry Potter", user));
     }
@@ -104,7 +86,7 @@ public class LibraryTest {
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
         User user = mock(User.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         library.checkoutBook("Harry Potter", user);
         assertEquals(false, library.returnBook("Harry Potter 3", user));
     }
@@ -117,7 +99,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         User user = mock(User.class);
         assertEquals(false, library.returnBook("Harry Potter", user));
     }
@@ -130,7 +112,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         User user1 = mock(User.class);
         User user2 = mock(User.class);
         library.checkoutBook("Twilight", user2);
@@ -146,7 +128,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         User user1 = mock(User.class);
         User user2 = mock(User.class);
         library.checkoutBook("Harry Potter", user1);
@@ -162,11 +144,9 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
 
-        library.displayMovieList();
-
-        verify(view).output(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40d%-40s%-40s\n", "Movie Name", "Year", "Director", "Rating", "Bahubali", 2015, "S S Rajamouli", "9"));
+        assertEquals(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40d%-40s%-40s\n", "Movie Name", "Year", "Director", "Rating", "Bahubali", 2015, "S S Rajamouli", "9"), library.movieList());
     }
 
     @Test
@@ -177,7 +157,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
 
         assertEquals(true, library.checkOutMovie("Bahubali"));
     }
@@ -190,7 +170,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
 
         assertEquals(false, library.checkOutMovie("Bahubali 2"));
     }
@@ -203,7 +183,7 @@ public class LibraryTest {
         ArrayList<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
         View view = mock(View.class);
-        Library library = new Library(books, movies, view);
+        Library library = new Library(books, movies);
         User user = new User("111-2222", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999");
         library.checkoutBook("Twilight", user);
         assertEquals(String.format("\nBook: \n%-40s%-40s%-40d\nCustomer: \n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n\n", "Twilight", "Stephenie Meyer", 2005, "library Number", "111-2222", "Name", "user1", "Email Address", "user1@gmail.com", "Phone Number", "9999999999"), library.checkedOutBookDetails());
