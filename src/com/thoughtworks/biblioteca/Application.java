@@ -17,18 +17,18 @@ public class Application {
         displayWelcomeMessage(view);
         Library library = getLibrary();
         UserAccount userAccount = getUserAccount();
-        Controller controller = getController(view, library, userAccount);
+        Session session = getDefaultSession();
+        MenuFactory menuFactory = new MenuFactory(library, view, userAccount, session);
+        Controller controller = new Controller(view, menuFactory, session);
         controller.run();
+    }
+
+    private Session getDefaultSession() {
+        return new Session(new User("111-0000", "abc", User.type.GUEST, "guser1", "guser1@gmail.com", "9999999999"));
     }
 
     private void displayWelcomeMessage(View view) {
         view.output("Welcome to Biblioteca\n");
-    }
-
-    private Controller getController(View view, Library library, UserAccount userAccount) {
-        Session session = new Session(new User("111-0000", "abc", User.type.GUEST, "guser1", "guser1@gmail.com", "9999999999"));
-        MenuFactory menuFactory = new MenuFactory(library, view, userAccount, session);
-        return new Controller(view, menuFactory, session);
     }
 
     private UserAccount getUserAccount() {
