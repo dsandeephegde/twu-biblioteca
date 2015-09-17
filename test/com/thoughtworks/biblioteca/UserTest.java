@@ -64,6 +64,6 @@ public class UserTest {
     @Test
     public void shouldOutputUserDetails() {
         User user = new User("111-2222", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999");
-        assertEquals(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", "111-2222", "user1", "user1@gmail.com", "9999999999"), user.userDetails());
+        assertEquals(String.format("%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n%-40s%-40s\n", "library Number", "111-2222", "Name", "user1", "Email Address", "user1@gmail.com", "Phone Number", "9999999999"), user.userDetails());
     }
 }
