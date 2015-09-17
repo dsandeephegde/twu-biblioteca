@@ -63,9 +63,7 @@ public class UserTest {
 
     @Test
     public void shouldOutputUserDetails() {
-        View view = mock(View.class);
         User user = new User("111-2222", "abc123", User.type.CUSTOMER, "user1", "user1@gmail.com", "9999999999");
-        user.displayDetails(view);
-        verify(view).output(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", "111-2222", "user1", "user1@gmail.com", "9999999999"));
+        assertEquals(String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", "111-2222", "user1", "user1@gmail.com", "9999999999"), user.userDetails());
     }
 }

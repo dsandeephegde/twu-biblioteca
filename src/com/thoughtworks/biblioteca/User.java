@@ -24,10 +24,10 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void displayDetails(View view) {
+    public String userDetails() {
         String userString = "";
         userString += String.format("%-40s%-40s%-40s%-40s\n%-40s%-40s%-40s%-40s\n", "library Number", "Name", "Email Address", "Phone Number", libraryNumber, name, emailAddress, phoneNumber);
-        view.output(userString);
+        return userString;
     }
 
     @Override

@@ -12,6 +12,6 @@ public class UserDetails implements MenuItem {
     @Override
     public void performOperation() {
         User user = session.getCurrentUser();
-        user.displayDetails(view);
+        view.output(user.userDetails());
     }
 }
