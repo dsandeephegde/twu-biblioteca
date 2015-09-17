@@ -39,6 +39,7 @@
     <fileset dir="./out">
         <include name="**/*.class"/>
         <exclude name="**/*Test*.class"/>
+        <exclude name="**/Application.class"/>
     </fileset>
 </cobertura-instrument>
 </target>

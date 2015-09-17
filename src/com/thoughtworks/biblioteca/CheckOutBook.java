@@ -5,17 +5,19 @@ public class CheckOutBook implements MenuItem {
 
     private Library library;
     private View view;
+    private Session session;
 
-    public CheckOutBook(Library library,View view) {
+    public CheckOutBook(Library library, View view, Session session) {
         this.library = library;
         this.view = view;
+        this.session = session;
     }
 
     @Override
     public void performOperation() {
         view.output("Enter the Book Name\n");
         String bookName = view.input();
-        if(library.checkoutBook(bookName))
+        if(library.checkoutBook(bookName, session.getCurrentUser()))
             view.output("Thank you! Enjoy the book\n");
          else
              view.output("That book is not available\n");

@@ -28,13 +28,13 @@ public class MenuFactory {
     }
 
     private Menu guestMenu() {
-        ArrayList<String> menuItems = new ArrayList<String>();
+        ArrayList<String> menuItems = new ArrayList<>();
         menuItems.add("1. List Books");
         menuItems.add("2. List Movie");
         menuItems.add("3. CheckOut Movie");
         menuItems.add("4. Login");
         menuItems.add("5. Exit");
-        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
         menuItemsHashMap.put("1", new ListBooks(library));
         menuItemsHashMap.put("2", new ListMovies(library));
         menuItemsHashMap.put("3", new CheckOutMovie(library, view));
@@ -45,7 +45,7 @@ public class MenuFactory {
     }
 
     private Menu customerMenu() {
-        ArrayList<String> menuItems = new ArrayList<String>();
+        ArrayList<String> menuItems = new ArrayList<>();
         menuItems.add("1. List Books");
         menuItems.add("2. CheckOut Book");
         menuItems.add("3. Return Book");
@@ -54,10 +54,10 @@ public class MenuFactory {
         menuItems.add("6. User Details");
         menuItems.add("7. Logout");
         menuItems.add("8. Exit");
-        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
         menuItemsHashMap.put("1", new ListBooks(library));
-        menuItemsHashMap.put("2", new CheckOutBook(library, view));
-        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
+        menuItemsHashMap.put("3", new ReturnBook(library, view, session));
         menuItemsHashMap.put("4", new ListMovies(library));
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("6", new UserDetails(session, view));
@@ -68,7 +68,7 @@ public class MenuFactory {
     }
 
     private Menu librarianMenu() {
-        ArrayList<String> menuItems = new ArrayList<String>();
+        ArrayList<String> menuItems = new ArrayList<>();
         menuItems.add("1. List Books");
         menuItems.add("2. CheckOut Book");
         menuItems.add("3. Return Book");
@@ -78,10 +78,10 @@ public class MenuFactory {
         menuItems.add("7. CheckedOut Book Details");
         menuItems.add("8. Logout");
         menuItems.add("9. Exit");
-        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<String, MenuItem>();
+        HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
         menuItemsHashMap.put("1", new ListBooks(library));
-        menuItemsHashMap.put("2", new CheckOutBook(library, view));
-        menuItemsHashMap.put("3", new ReturnBook(library, view));
+        menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
+        menuItemsHashMap.put("3", new ReturnBook(library, view, session));
         menuItemsHashMap.put("4", new ListMovies(library));
         menuItemsHashMap.put("5", new CheckOutMovie(library, view));
         menuItemsHashMap.put("6", new UserDetails(session, view));

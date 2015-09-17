@@ -12,19 +12,25 @@ public class ReturnBookTest {
     public void shouldCallReturnBook() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        ReturnBook returnBook = new ReturnBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(session.getCurrentUser()).thenReturn(user);
+        ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
 
-        verify(library).returnBook(view.input());
+        verify(library).returnBook(view.input(), user);
     }
 
     @Test
     public void shouldDisplayThankYouForSuccessfulReturn() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        when(library.returnBook(view.input())).thenReturn(true);
-        ReturnBook returnBook = new ReturnBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(session.getCurrentUser()).thenReturn(user);
+        when(library.returnBook(view.input(), user)).thenReturn(true);
+        ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
 
@@ -35,8 +41,10 @@ public class ReturnBookTest {
     public void shouldDisplayNotValidBookForUnsuccessfulReturn() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        when(library.returnBook(view.input())).thenReturn(false);
-        ReturnBook returnBook = new ReturnBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(library.returnBook(view.input(), user)).thenReturn(false);
+        ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
 
@@ -47,7 +55,8 @@ public class ReturnBookTest {
     public void shouldDisplayEnterBookNameInitially() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        ReturnBook returnBook = new ReturnBook(library, view);
+        Session session = mock(Session.class);
+        ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
 

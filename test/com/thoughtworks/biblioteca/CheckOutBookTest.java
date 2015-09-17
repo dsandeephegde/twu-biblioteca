@@ -2,9 +2,6 @@ package com.thoughtworks.biblioteca;
 
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -16,18 +13,24 @@ public class CheckOutBookTest {
     public void shouldCallCheckOut() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        CheckOutBook checkOutBook = new CheckOutBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(session.getCurrentUser()).thenReturn(user);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
         checkOutBook.performOperation();
         verify(view).input();
-        verify(library).checkoutBook(view.input());
+        verify(library).checkoutBook(view.input(), user);
     }
 
     @Test
     public void shouldDisplayThankYouForSuccessfulCheckout() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        when(library.checkoutBook(view.input())).thenReturn(true);
-        CheckOutBook checkOutBook = new CheckOutBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(session.getCurrentUser()).thenReturn(user);
+        when(library.checkoutBook(view.input(), user)).thenReturn(true);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
 
         checkOutBook.performOperation();
 
@@ -38,8 +41,10 @@ public class CheckOutBookTest {
     public void shouldDisplayNotAvailableForUnsuccessfulCheckout() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        when(library.checkoutBook(view.input())).thenReturn(false);
-        CheckOutBook checkOutBook = new CheckOutBook(library, view);
+        Session session = mock(Session.class);
+        User user = mock(User.class);
+        when(library.checkoutBook(view.input(), user)).thenReturn(false);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
 
         checkOutBook.performOperation();
 
@@ -50,7 +55,8 @@ public class CheckOutBookTest {
     public void shouldDisplayEnterBookNameInitially() {
         Library library = mock(Library.class);
         View view = mock(View.class);
-        CheckOutBook checkOutBook = new CheckOutBook(library, view);
+        Session session = mock(Session.class);
+        CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
 
         checkOutBook.performOperation();
 
