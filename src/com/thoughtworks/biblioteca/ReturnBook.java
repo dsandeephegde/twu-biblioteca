@@ -17,7 +17,8 @@ public class ReturnBook implements MenuItem {
     public void performOperation() {
         view.output("Enter the Book Name\n");
         String bookName = view.input();
-        if(library.returnBook(bookName, session.getCurrentUser()))
+        Book book = new Book(bookName, null, 0);
+        if(library.returnBook(book, session.getCurrentUser()))
             view.output("Thank you for returning the book\n");
         else
             view.output("That is not a valid book to return\n");

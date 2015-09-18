@@ -23,7 +23,9 @@ public class CheckOutMovieTest {
     public void shouldDisplayThankYouOnSuccessfulCheckOut() {
         View view = mock(View.class);
         Library library = mock(Library.class);
-        when(library.checkOutMovie(view.input())).thenReturn(true);
+        when(view.input()).thenReturn("movie");
+        Movie movie = new Movie(view.input(), 0, null, null);
+        when(library.checkOut(movie)).thenReturn(true);
         MenuItem menuItem = new CheckOutMovie(library, view);
 
         menuItem.performOperation();
@@ -35,7 +37,9 @@ public class CheckOutMovieTest {
     public void shouldDisplayNotAvailableOnUnsuccessfulCheckOut() {
         View view = mock(View.class);
         Library library = mock(Library.class);
-        when(library.checkOutMovie(view.input())).thenReturn(false);
+        when(view.input()).thenReturn("movie");
+        Movie movie = new Movie(view.input(), 0, null, null);
+        when(library.checkOut(movie)).thenReturn(false);
         MenuItem menuItem = new CheckOutMovie(library, view);
 
         menuItem.performOperation();

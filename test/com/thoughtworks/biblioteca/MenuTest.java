@@ -114,6 +114,8 @@ public class MenuTest {
         Session session = mock(Session.class);
         User user = mock(User.class);
         when(session.getCurrentUser()).thenReturn(user);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
         menuItemsHashMap.put("1", new ListBooks(library, view));
         menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
@@ -126,7 +128,7 @@ public class MenuTest {
 
         menu.selectMenuItem("2").performOperation();
 
-        verify(library).checkoutBook(view.input(), user);
+        verify(library).checkOut(book, user);
     }
 
     @Test
@@ -164,6 +166,8 @@ public class MenuTest {
         Session session = mock(Session.class);
         User user = mock(User.class);
         when(session.getCurrentUser()).thenReturn(user);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
         HashMap<String, MenuItem> menuItemsHashMap= new HashMap<>();
         menuItemsHashMap.put("1", new ListBooks(library, view));
         menuItemsHashMap.put("2", new CheckOutBook(library, view, session));
@@ -176,6 +180,6 @@ public class MenuTest {
 
         menu.selectMenuItem("3").performOperation();
 
-        verify(library).returnBook(view.input(), user);
+        verify(library).returnBook(book, user);
     }
 }

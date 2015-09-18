@@ -16,10 +16,11 @@ public class CheckOutBookTest {
         Session session = mock(Session.class);
         User user = mock(User.class);
         when(session.getCurrentUser()).thenReturn(user);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
         CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
         checkOutBook.performOperation();
-        verify(view).input();
-        verify(library).checkoutBook(view.input(), user);
+        verify(library).checkOut(book, user);
     }
 
     @Test
@@ -29,7 +30,9 @@ public class CheckOutBookTest {
         Session session = mock(Session.class);
         User user = mock(User.class);
         when(session.getCurrentUser()).thenReturn(user);
-        when(library.checkoutBook(view.input(), user)).thenReturn(true);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
+        when(library.checkOut(book, user)).thenReturn(true);
         CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
 
         checkOutBook.performOperation();
@@ -43,7 +46,9 @@ public class CheckOutBookTest {
         View view = mock(View.class);
         Session session = mock(Session.class);
         User user = mock(User.class);
-        when(library.checkoutBook(view.input(), user)).thenReturn(false);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
+        when(library.checkOut(book, user)).thenReturn(false);
         CheckOutBook checkOutBook = new CheckOutBook(library, view, session);
 
         checkOutBook.performOperation();

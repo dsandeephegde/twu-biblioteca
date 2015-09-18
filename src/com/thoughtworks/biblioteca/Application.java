@@ -39,11 +39,13 @@ public class Application {
     }
 
     private Library getLibrary() {
-        ArrayList<Book> books = new ArrayList<>();
-        books.add(new Book("Twilight", "Stephenie Meyer", 2005));
-        books.add(new Book("Harry Potter", "J.K. Rowling", 2002));
-        ArrayList<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
+        ArrayList<Book> booksList = new ArrayList<>();
+        booksList.add(new Book("Twilight", "Stephenie Meyer", 2005));
+        booksList.add(new Book("Harry Potter", "J.K. Rowling", 2002));
+        Books books = new Books(booksList);
+        ArrayList<Movie> moviesList = new ArrayList<>();
+        moviesList.add(new Movie("Bahubali", 2015, "S S Rajamouli", "9"));
+        Movies movies = new Movies(moviesList);
         return new Library(books, movies);
     }
 

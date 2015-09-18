@@ -15,11 +15,13 @@ public class ReturnBookTest {
         Session session = mock(Session.class);
         User user = mock(User.class);
         when(session.getCurrentUser()).thenReturn(user);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
         ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
 
-        verify(library).returnBook(view.input(), user);
+        verify(library).returnBook(book, user);
     }
 
     @Test
@@ -28,8 +30,10 @@ public class ReturnBookTest {
         View view = mock(View.class);
         Session session = mock(Session.class);
         User user = mock(User.class);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
         when(session.getCurrentUser()).thenReturn(user);
-        when(library.returnBook(view.input(), user)).thenReturn(true);
+        when(library.returnBook(book, user)).thenReturn(true);
         ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();
@@ -43,7 +47,9 @@ public class ReturnBookTest {
         View view = mock(View.class);
         Session session = mock(Session.class);
         User user = mock(User.class);
-        when(library.returnBook(view.input(), user)).thenReturn(false);
+        when(view.input()).thenReturn("book");
+        Book book = new Book(view.input(), null, 0);
+        when(library.returnBook(book, user)).thenReturn(false);
         ReturnBook returnBook = new ReturnBook(library, view, session);
 
         returnBook.performOperation();

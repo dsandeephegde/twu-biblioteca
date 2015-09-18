@@ -14,7 +14,8 @@ public class CheckOutMovie implements MenuItem {
     public void performOperation() {
         view.output("Enter the Movie name\n");
         String movieName = view.input();
-        if (library.checkOutMovie(movieName))
+        Movie movie = new Movie(movieName, 0, null, null);
+        if (library.checkOut(movie))
             view.output("Thank You! Enjoy the Movie\n");
         else
             view.output("That Movie is not available\n");
