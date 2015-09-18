@@ -1,5 +1,5 @@
 #Problem description
-    Biblioteca is the the Library management system where user can checkout and return availableBooks and librarian can manage it.
+    Biblioteca is the the Library management system where user can checkout and return availableBooks and Checkout movies and librarian can manage it.
         
 #Development environment setup
     Following software must be installed in your system.
@@ -8,5 +8,10 @@
 
 #Building code base
     Go to the terminal and type the following
-        $cd <to the sec directory>
+        $cd <to the Biblioteca directory>
         $ant
+
+#Running the Application
+    In the Terminal
+        $cd <to the Biblioteca Directory>
+        $ant run

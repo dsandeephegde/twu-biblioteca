@@ -11,7 +11,6 @@ public class Books {
     private ArrayList<Book> availableBooks;
     private HashMap<Book, User> checkOutBooksHash = new HashMap<>();
 
-
     public Books(ArrayList<Book> availableBooks) {
         this.availableBooks = availableBooks;
     }
